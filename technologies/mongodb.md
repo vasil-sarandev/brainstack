@@ -8,6 +8,7 @@ MongoDB is a NoSQL document database designed for ease of development and horizo
 ## Resources
 
 - **Deep Dives** 
+	- [Schema Design / Data Modeling - MongoDB](https://www.mongodb.com/docs/manual/data-modeling/)
 	- [Aggregation - MongoDB Manual](https://www.mongodb.com/docs/manual/aggregation/)
 	- [Replication - MongoDB Manual](https://www.mongodb.com/docs/manual/replication/)
 	- [Sharding - MongoDB Manual](https://www.mongodb.com/docs/manual/sharding/) 
