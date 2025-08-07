@@ -39,6 +39,7 @@ I don't mind giving back to the community. I've spent countless hours reading ma
 - [React](react.md)
 - [Redux & Redux Toolkit](redux-rtk.md)
 - [NextJS](nextjs.md)
+- [TypeORM](typeorm.md)
 
 ---
 
@@ -47,5 +48,7 @@ I don't mind giving back to the community. I've spent countless hours reading ma
 - https://awesome-architecture.com/ (Curated list of awesome articles and resources to learn and practice software architecture, patterns and principles)
 - https://roadmaps.sh (Roadmaps for software engineering topics and technologies)
 - https://neetcode.io/ - Curated LeetCode problems
+- https://www.mooc.fi/en/ - University of Helsinki's Open Courses
+- https://www.edx.org - Open Courses from Top Universities & Companies
 
 ---
