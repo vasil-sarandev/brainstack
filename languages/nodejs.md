@@ -23,6 +23,7 @@ Core features:
 	- [How to use Streams](https://nodejs.org/en/learn/modules/how-to-use-streams) 
 	- [Writing Files with NodeJS](https://nodejs.org/en/learn/manipulating-files/writing-files-with-nodejs)
 	- [Read Input from Command Line in NodeJS](https://nodejs.org/en/learn/command-line/accept-input-from-the-command-line-in-nodejs)
+	- [Setting up a NodeJS project with TypeScript - DigitalOcean](https://www.digitalocean.com/community/tutorials/setting-up-a-node-project-with-typescript)
 
 - **Docs & References**
 	- [Learn NodeJS - Official Docs](https://nodejs.org/en/learn/)
