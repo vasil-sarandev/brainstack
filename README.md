@@ -32,6 +32,7 @@ The repository is made with the [Obisidian MD Reader](https://obsidian.md/) and 
 - [NextJS](nextjs.md)
 - [TypeORM](typeorm.md)
 - [PostgreSQL](postgresql.md)
+- [Amazon Web Services (AWS)](aws.md)
 
 ---
 ## Resources
