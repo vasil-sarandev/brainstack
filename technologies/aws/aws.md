@@ -26,3 +26,21 @@
 	- **AWS Elastic Beanstalk** – Platform-as-a-Service (PaaS) to deploy and scale web apps automatically (uses EC2, S3, RDS, etc. under the hood).
 
 ---
+## Roadmap
+
+goals for AWS section completion
+
+- go through the essentials course
+- go through the materials for EC2
+	- make an MD file in the brainstack
+	- deploy a node application to EC2
+- go through the materials for Elastic Beanstalk
+	- make an MD file in the brainstack
+	- deploy a node application to Elastic Beanstalk
+- go through the materials for RDS
+	- make an MD file in the brainstack (RDS proxy honorable mention)
+	- deploy a Postgres database to RDS
+- go through the materials for S3
+	- connect the S3 to the Elastic Beanstalk application, make a node endpoint that uploads a file there and one that downloads it.
+
+---
