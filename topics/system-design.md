@@ -186,13 +186,15 @@ Some of the benefits a Reverse Proxy provides are:
 
 An **API Gateway** is a specialized type of _reverse proxy_ designed to act as a single entry point for client requests in a microservices architecture. It routes incoming API calls to the appropriate backend services and often handles cross-cutting concerns that would otherwise be duplicated across services.
 
-Common responsibilities of an API Gateway include:
+Gateways are most often implemented with cloud native solutions like AWS API Gateway and their common responsibilities include: 
 
 - **Authentication and Authorization** – validating tokens and controlling access to services.    
 - **Rate Limiting and Throttling** – protecting services from abuse by limiting request rates.
 - **Request and Response Transformation** – modifying headers, payloads, or protocols.
 - **Logging and Monitoring** – capturing metrics and request logs for observability.
 - **Caching** – storing responses to reduce load on backend services.
+
+
 
 ### Load Balancers vs Reverse Proxies
 
