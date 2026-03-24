@@ -72,6 +72,13 @@ Consistency Models refer to the ways in which data is stored and managed in a di
  - **Strong Consistency** - After an update is made to the data, it will be immediately visible to any subsequent read operations. The data is replicated in a synchronous manner, ensuring that all copies of the data are updated at the same time.
  - **Eventual (or Weak) Consistency** - After an update is made to the data, it will be eventually visible to any subsequent read operations. The data is replicated in an asynchronous manner, ensuring that all copies of the data are eventually updated.
 
+### Distributed Transactions
+
+A single operation that spans multiple microservices. They are typically achieved with:
+
+- **2PC (2-Phase Comitt)**: A synchronous blocking protocol for strict consistency. Coordinator sends a prepare request and only after all participants acknowledge, is it committed.
+- **SAGA** - An asynchronous sequence of local transactions for high throughput. Each step is committed locally and if a step fails, all previous steps trigger an "undo transaction" (not a rollback, since the transaction is complete already).
+
 ### Fault Tolerance
 
 - **Leader Election**: Ensures coordination in distributed environments.

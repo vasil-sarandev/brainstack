@@ -152,7 +152,6 @@ APIs allow software components to communicate:
 - **Token-based authentication** - Token-based authentication is a protocol which allows users to verify their identity, and in return receive a unique access token. JWT is the most popular implementation of token-based authentication nowadays. 
 - **Cookies / Session-based Authentication** - Server-managed authentication. When a user logs in, the server creates a session and sends a unique identifier (session ID) to the client as a cookie. This cookie is then sent with every subsequent request, allowing the server to identify and authenticate the user.
 
-
 ---
 ## Distributed Systems
 
