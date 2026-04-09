@@ -58,3 +58,45 @@ TypeORM supports two architectural patterns for working with entities.
 
 ---
 
+## Find Options
+
+- **Strings**
+	- Contains: `ILike("%word%")` / SQL: `WHERE col ILIKE '%word%'`
+	- Starts with: `ILike("word%")` / SQL: `WHERE col ILIKE 'word%'`
+	- Ends with: `ILike("%word")` / SQL: `WHERE col ILIKE '%word'`
+
+```TypeScript
+import { ILike } from "typeorm";
+
+const users = await userRepository.find({ where: { firstName: ILike("%alex%") } });
+```
+
+- **Numbers**
+	- **Greater Than:** `MoreThan(10)`
+	- **Less Than:** `LessThan(10)`
+	- **Inclusive:** `MoreThanOrEqual(10)` or `LessThanOrEqual(10)`
+	- **Between:** `Between(1, 10)`
+
+```Typescript
+import { MoreThan, Between } from "typeorm";
+
+const products = await productRepository.find({ where: { price: MoreThan(50), stock: Between(10, 100) } });
+```
+
+- **Arrays**
+
+```Typescript
+import { In, ArrayContains } from "typeorm"; 
+// Find users with specific IDs 
+const users = await userRepository.find({ where: { id: In([1, 2, 5]) } });
+```
+
+- **Logical Operators**
+
+```Typescript
+// WHERE firstName = 'Jane' AND isAdmin = true 
+const users = await userRepository.find({ where: { firstName: "Jane", isAdmin: true } });
+// WHERE firstName = 'Jane' or 'Joe' and isAdmin=true
+const users = await userRepository.find({ where: [ { firstName: "Jane", isAdmin: true }, { firstName: "Joe", isAdmin: true } ] });
+```
+
