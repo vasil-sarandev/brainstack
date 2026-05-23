@@ -33,6 +33,8 @@ The repository is made with the [Obisidian MD Reader](https://obsidian.md/) and 
 - [TypeORM](typeorm.md)
 - [PostgreSQL](postgresql.md)
 - [Amazon Web Services (AWS)](aws.md)
+- [Cursor](cursor.md)
+- [Claude Code](claude-code.md)
 
 ---
 ## Resources
