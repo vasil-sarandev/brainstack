@@ -17,6 +17,8 @@ GitHub Actions is GitHub’s built-in CI/CD platform. You define workflows in YA
 - **Docs & References**
 	- [GitHub Actions Documentation](https://docs.github.com/en/actions)
 	- [GitHub Marketplace: Actions](https://github.com/marketplace?type=actions)
+
+- **Built-in actions**
 	- [actions/checkout](https://github.com/actions/checkout) – standard repo checkout action
 	- [actions/cache](https://github.com/actions/cache) – dependency and build cache
 	- [actions/upload-artifact](https://github.com/actions/upload-artifact) – pass files between jobs or retain build outputs
@@ -25,7 +27,8 @@ GitHub Actions is GitHub’s built-in CI/CD platform. You define workflows in YA
 
 ## Core Concepts
 
-- **Workflow**: A single automated process defined in a YAML file (e.g. `ci.yml`), versioned with the repo.
+- **Workflow**: A single automated process defined in a YAML file (e.g. `ci.yml`), versioned with the repo. Must be defined in the `.github/workflows` folder.
+- **Templates**: available at [https://github.com/actions/starter-workflows](https://github.com/actions/starter-workflows)
 - **Event**: What starts a workflow—`push`, `pull_request`, `workflow_dispatch`, `schedule` (cron), releases, etc.
 - **Job**: A set of steps that run on the same runner; jobs in one workflow can run in parallel or depend on each other via `needs`.
 - **Step**: An individual task—run a shell command or use a published **Action** (`uses:`).
@@ -35,6 +38,12 @@ GitHub Actions is GitHub’s built-in CI/CD platform. You define workflows in YA
 - **Secrets & variables**: `secrets` for sensitive values; `vars` for non-secret config at repo, environment, or org level.
 - **Environments**: Named targets (e.g. `production`) with protection rules, required reviewers, and environment-specific secrets.
 - **Artifacts & caching**: Store build outputs between jobs or runs; cache dependencies to shorten CI time.
+- **Contexts (`github`)**: Read-only workflow metadata accessed in expressions via `${{ github.* }}`—e.g. `github.ref`, `github.sha`, `github.repository`, `github.actor`, `github.event`; used in `if:`, `env:`, and action inputs. Many properties are also exposed on the runner as `GITHUB_*` environment variables.
 - **Permissions (`GITHUB_TOKEN`)**: Scoped token per job; follow least privilege via `permissions:` in workflow or org settings.
 
+---
+
+## Example structure
+
+![github-actions](github-actions.png)
 ---
