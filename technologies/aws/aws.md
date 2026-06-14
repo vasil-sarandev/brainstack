@@ -23,4 +23,7 @@
   - **AWS RDS (Relational Database Service)** – Managed SQL databases (MySQL, PostgreSQL, etc.) with automated backups and patching.
   - **AWS IAM (Identity and Access Management)** – Manages users, groups, roles, and permissions securely.
   - **AWS EC2 (Elastic Compute Cloud)** – Virtual servers (instances) to run applications in the cloud.
+  - **AWS ECR (Elastic Container Registry)** – Managed Docker container image registry for storing, versioning, and sharing images.
+  - **AWS ECS (Elastic Container Service)** – Fully managed container orchestration service for running and scaling Docker containers on AWS.
+  - **AWS Fargate** – Serverless compute engine for containers; runs ECS (and EKS) tasks without managing EC2 instances.
   - **AWS Elastic Beanstalk** – Platform-as-a-Service (PaaS) to deploy and scale web apps automatically (uses EC2, S3, RDS, etc. under the hood).
