@@ -17,6 +17,7 @@ The repository is made with the [Obisidian MD Reader](https://obsidian.md/) and 
 
 - [Structured Query Language (SQL)](structured-query-language.md)
 - [NodeJS](nodejs.md)
+- [Java](java.md)
 
 ---
 ## Technologies
