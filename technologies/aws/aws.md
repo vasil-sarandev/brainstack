@@ -25,5 +25,7 @@
   - **AWS EC2 (Elastic Compute Cloud)** – Virtual servers (instances) to run applications in the cloud.
   - **AWS ECR (Elastic Container Registry)** – Managed Docker container image registry for storing, versioning, and sharing images.
   - **AWS ECS (Elastic Container Service)** – Fully managed container orchestration service for running and scaling Docker containers on AWS.
+  - **AWS EKS (Elastic Kubernetes Service)** – Managed Kubernetes service for deploying, managing, and scaling containerized applications.
   - **AWS Fargate** – Serverless compute engine for containers; runs ECS (and EKS) tasks without managing EC2 instances.
+  - **AWS ALB (Application Load Balancer)** – Layer 7 load balancer that routes HTTP/HTTPS traffic to targets such as EC2 instances, ECS tasks, or IP addresses.
   - **AWS Elastic Beanstalk** – Platform-as-a-Service (PaaS) to deploy and scale web apps automatically (uses EC2, S3, RDS, etc. under the hood).
