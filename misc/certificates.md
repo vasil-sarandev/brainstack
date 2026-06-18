@@ -1,4 +1,4 @@
-# Introduction
+# Certificates
 
 These are certificates I plan to pursue
 
