@@ -38,6 +38,14 @@ The repository is made with the [Obisidian MD Reader](https://obsidian.md/) and 
 - [GitHub Actions](github-actions.md)
 
 ---
+## Miscellaneous
+
+- [Books](books.md) 
+- [Certificates](certificates.md)
+- [Cloud and infrastructure readiness](cloud-and-infrastructure-readiness.md)
+- [Interview Preparation](interview-preparation.md)
+
+---
 ## Resources
 
 - https://awesome-architecture.com/ (Curated list of awesome articles and resources to learn and practice software architecture, patterns and principles)
