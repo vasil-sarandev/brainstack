@@ -29,3 +29,9 @@
   - **AWS Fargate** – Serverless compute engine for containers; runs ECS (and EKS) tasks without managing EC2 instances.
   - **AWS ALB (Application Load Balancer)** – Layer 7 load balancer that routes HTTP/HTTPS traffic to targets such as EC2 instances, ECS tasks, or IP addresses.
   - **AWS Elastic Beanstalk** – Platform-as-a-Service (PaaS) to deploy and scale web apps automatically (uses EC2, S3, RDS, etc. under the hood).
+
+---
+
+## Hands-ons
+
+- [ECR push via GitHub Actions (OIDC)](ecr-github-actions-oidc.md)

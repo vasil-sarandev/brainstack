@@ -13,6 +13,7 @@ GitHub Actions is GitHub’s built-in CI/CD platform. You define workflows in YA
 	- [GitHub Actions: Workflow syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
 	- [GitHub Actions: Expressions](https://docs.github.com/en/actions/learn-github-actions/expressions)
 	- [GitHub Actions: Encrypted secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
+	- [OIDC + AWS ECR image push](oidc-aws-ecr-push.md) — Showtimex CI pipeline (build + push to ECR)
 
 - **Docs & References**
 	- [GitHub Actions Documentation](https://docs.github.com/en/actions)
@@ -22,6 +23,10 @@ GitHub Actions is GitHub’s built-in CI/CD platform. You define workflows in YA
 	- [actions/checkout](https://github.com/actions/checkout) – standard repo checkout action
 	- [actions/cache](https://github.com/actions/cache) – dependency and build cache
 	- [actions/upload-artifact](https://github.com/actions/upload-artifact) – pass files between jobs or retain build outputs
+
+- **AWS actions**
+	-  [aws-actions/configure-aws-credentials](https://github.com/aws-actions/configure-aws-credentials)
+	- [aws-actions/amazon-ecr-login](https://github.com/aws-actions/amazon-ecr-login)
 
 ---
 
@@ -43,7 +48,6 @@ GitHub Actions is GitHub’s built-in CI/CD platform. You define workflows in YA
 
 ---
 
-## Example structure
+## Hands-ons:
 
-![github-actions](github-actions.png)
----
+- [ECR push via GitHub Actions (OIDC)](ecr-github-actions-oidc.md)
