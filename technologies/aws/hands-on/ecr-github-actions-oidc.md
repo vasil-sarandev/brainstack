@@ -3,11 +3,13 @@
 #technology #aws #github-actions #docker
 
 
-This is a document that covers a common workflow - building and pushing a docker image from Github Action into AWS ECR.
+Hands-on walkthrough for a common workflow: building and pushing a Docker image from GitHub Actions into AWS ECR.
+
+**Concepts first:** [AWS ECR (Elastic Container Registry)](ecr.md) — registry model, IAM, and the CI/CD sequence diagram.
 
 Reference implementation: [showtimex](https://github.com/vasil-sarandev/showtimex) — workflow [`.github/workflows/ci-cd.yml`](https://github.com/vasil-sarandev/showtimex/blob/main/.github/workflows/ci-cd.yml), app deployment notes in [`docs/deployment.md`](https://github.com/vasil-sarandev/showtimex/blob/main/docs/deployment.md).
 
-GitHub Actions–focused companion: [OIDC + AWS ECR image push](oidc-aws-ecr-push.md).
+GitHub Actions context: [GitHub Actions](../../github-actions/github-actions.md).
 
 ---
 
