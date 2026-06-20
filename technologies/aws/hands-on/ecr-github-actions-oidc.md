@@ -41,7 +41,7 @@ push to main
      │
      ▼
 Amazon ECR  repository: showtimex/api
-  tags: latest, <git-sha>
+  tag: <git-sha> (immutable tags — no `latest` overwrite)
 ```
 
 Runtime deploy (EC2, RDS, SSM) is **separate** — CI only publishes the image.
@@ -59,8 +59,10 @@ Runtime deploy (EC2, RDS, SSM) is **separate** — CI only publishes the image.
 Full image URI pattern:
 
 ```text
-{account-id}.dkr.ecr.{region}.amazonaws.com/showtimex/api:latest
+{account-id}.dkr.ecr.{region}.amazonaws.com/showtimex/api:<git-sha>
 ```
+
+**Tag immutability:** if enabled on the repository, each tag can only be pushed once. CI pushes **`${{ github.sha }}` only** — do not push `latest` unless the repo uses mutable tags.
 
 ### 2. OIDC identity provider (per AWS account)
 
@@ -224,9 +226,7 @@ jobs:
         run: |
           docker build -f docker/Dockerfile --target prod \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
-            -t $ECR_REGISTRY/$ECR_REPOSITORY:latest \
             .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 ```
 
