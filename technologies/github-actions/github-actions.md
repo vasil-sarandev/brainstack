@@ -14,20 +14,18 @@ GitHub Actions is GitHub’s built-in CI/CD platform. You define workflows in YA
 	- [GitHub Actions: Expressions](https://docs.github.com/en/actions/learn-github-actions/expressions)
 	- [GitHub Actions: Encrypted secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
 	- [AWS ECR (Elastic Container Registry)](ecr.md) — concepts and CI/CD flow (OIDC → ECR push)
-	- [ECR push via GitHub Actions (OIDC)](../aws/hands-on/ecr-github-actions-oidc.md) — Showtimex hands-on (build + push to ECR)
-
+- **Hands-ons**
+	- [ECR push via GitHub Actions (OIDC)](hands-on/ecr-github-actions-oidc.md)
 - **Docs & References**
 	- [GitHub Actions Documentation](https://docs.github.com/en/actions)
 	- [GitHub Marketplace: Actions](https://github.com/marketplace?type=actions)
-
 - **Built-in actions**
 	- [actions/checkout](https://github.com/actions/checkout) – standard repo checkout action
 	- [actions/cache](https://github.com/actions/cache) – dependency and build cache
 	- [actions/upload-artifact](https://github.com/actions/upload-artifact) – pass files between jobs or retain build outputs
-
 - **AWS actions**
 	-  [aws-actions/configure-aws-credentials](https://github.com/aws-actions/configure-aws-credentials)
-	- [aws-actions/amazon-ecr-login](https://github.com/aws-actions/amazon-ecr-login)
+	-  [aws-actions/amazon-ecr-login](https://github.com/aws-actions/amazon-ecr-login)
 
 ---
 
@@ -48,7 +46,3 @@ GitHub Actions is GitHub’s built-in CI/CD platform. You define workflows in YA
 - **Permissions (`GITHUB_TOKEN`)**: Scoped token per job; follow least privilege via `permissions:` in workflow or org settings.
 
 ---
-
-## Hands-ons:
-
-- [ECR push via GitHub Actions (OIDC)](../aws/hands-on/ecr-github-actions-oidc.md)

@@ -1,25 +1,22 @@
 # ECR push via GitHub Actions (OIDC)
 
-#technology #aws #github-actions #docker
+#technology #github-actions #aws #docker
 
+Hands-on walkthrough for a common CI pattern: build a Docker image in GitHub Actions and push to AWS ECR — no long-lived AWS keys in the repo.
 
-Hands-on walkthrough for a common workflow: building and pushing a Docker image from GitHub Actions into AWS ECR.
-
-**Concepts first:** [AWS ECR (Elastic Container Registry)](ecr.md) — registry model, IAM, and the CI/CD sequence diagram.
+Part of: [GitHub Actions](../github-actions.md). AWS background: [ECR](../../aws/services/ecr.md), [IAM](../../aws/services/iam.md).
 
 Reference implementation: [showtimex](https://github.com/vasil-sarandev/showtimex) — workflow [`.github/workflows/ci-cd.yml`](https://github.com/vasil-sarandev/showtimex/blob/main/.github/workflows/ci-cd.yml), app deployment notes in [`docs/deployment.md`](https://github.com/vasil-sarandev/showtimex/blob/main/docs/deployment.md).
-
-GitHub Actions context: [GitHub Actions](../../github-actions/github-actions.md).
 
 ---
 
 ## Resources
 
+- **GitHub**
+  - [Configuring OIDC in AWS](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
 - **AWS**
   - [Push a Docker image to ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html)
   - [Create a role for GitHub OIDC](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html)
-- **GitHub**
-  - [Configuring OIDC in AWS](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
 - **Actions**
   - [aws-actions/configure-aws-credentials](https://github.com/aws-actions/configure-aws-credentials)
   - [aws-actions/amazon-ecr-login](https://github.com/aws-actions/amazon-ecr-login)
@@ -231,4 +228,3 @@ jobs:
             .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 ```
-
