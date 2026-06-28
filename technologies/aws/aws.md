@@ -8,6 +8,7 @@
   - [AWS Course - AWS Cloud Practitioner Essentials](https://skillbuilder.aws/learn/94T2BEN85A/aws-cloud-practitioner-essentials/8D79F3AVR7)
 - **Services**
 	- [AWS IAM (Identity and Access Management)](iam.md)
+	- [AWS VPC (Virtual Private Cloud)](vpc.md)
 	- [AWS EC2 (Elastic Compute Cloud)](ec2.md)
 	- [AWS ECR (Elastic Container Registry)](ecr.md)
 	- [AWS ECS (Elastic Container Service)](ecs.md)
@@ -30,6 +31,7 @@
   - **AWS S3 (Simple Storage Service)** – Object storage for any amount of data; great for backups, static website hosting, and data lakes.
   - **[AWS RDS (Relational Database Service)](rds.md)** – Managed PostgreSQL, MySQL, and Aurora; backups, Multi-AZ, read replicas.
   - **[AWS IAM (Identity and Access Management)](iam.md)** – Users, groups, roles, and policies; controls access to every AWS API.
+  - **[AWS VPC (Virtual Private Cloud)](vpc.md)** – Isolated regional network; subnets, routing, NAT, security groups; foundation for EC2, ECS, EKS, and RDS placement.
   - **[AWS EC2 (Elastic Compute Cloud)](ec2.md)** – Virtual servers (instances); foundation for single-VM apps, ECS EC2 capacity, and EKS worker nodes.
   - **[AWS ECR (Elastic Container Registry)](ecr.md)** – Managed Docker container image registry; typical target for CI-built images before ECS/EKS/Fargate.
   - **[AWS ECS (Elastic Container Service)](ecs.md)** – AWS-native container orchestration (Fargate or EC2); service-level task scaling + capacity providers.
