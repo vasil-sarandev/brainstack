@@ -16,19 +16,21 @@
 
 ## Putting the resources into practice
 
-Reference CI pipeline: [ECR push via GitHub Actions (OIDC)](../technologies/github-actions/hands-on/ecr-github-actions-oidc.md).
-
 ### First hands-on — deploy to ECS with Github Actions CI/CD pipeline.
+
+GitHub Actions builds the Docker image and pushes it to ECR on merge to `main`. ECS Fargate pulls the image from ECR and runs the API. SSM Parameter Store (SecureString) supplies secrets at task startup (RDS host, password, JWT, Stripe keys, etc.) as environment variables. RDS PostgreSQL in the same VPC, not publicly accessible. The RDS security group allows inbound 5432 only from the ECS task security group (and temporarily from my IP for local migrations). An Application Load Balancer (ALB) is the public entry point for HTTP(S). It receives traffic from the internet, performs health checks, and forwards requests to the ECS service. The ECS security group only accepts application traffic from the ALB, so tasks aren’t exposed directly to the internet.
+
+Flow: `Client → ALB → ECS → RDS`
 
 **AWS setup (one-time)**
 
-- VPC with public + private subnets (≥2 AZs)
+- **VPC**: Default is pretty good for a starter point.
+	- **Security groups used for RDS/ECS**: Allow inbound traffic from personal IP + ECS only; Allow all outbound traffic; Disable all public incoming traffic.
 - **IAM:** GitHub OIDC identity provider + role scoped to the repo ([IAM](../technologies/aws/services/iam.md))
-- **ECR:** repository for the app image ([ECR](../technologies/aws/services/ecr.md))
-- **RDS:** PostgreSQL or Aurora in **private subnets**; security group allows `5432` from the ECS task security group only ([RDS](../technologies/aws/services/rds.md))
+- **ECR:** repository for the app image ([Reference for ECR-Github Actions hands-on](ecr-github-actions-oidc.md))
+- **RDS:** PostgreSQL 
 - **ECS:** Fargate cluster, task definition (`awslogs` → CloudWatch), service in private subnets ([ECS](../technologies/aws/services/ecs.md))
 - **ALB:** internet-facing, target group → ECS service, listener (HTTPS preferred); health check on app path (e.g. `/healthz`)
-- Security groups: ALB → app port on tasks; tasks → RDS; no direct public access to tasks or DB
 
 **CI (GitHub Actions)**
 
