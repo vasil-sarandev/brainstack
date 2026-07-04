@@ -169,6 +169,6 @@ Capacity provider / ASG  →  more/fewer EC2 hosts (EC2 launch type only)
 
 ## ECS vs EKS
 
-Choose **ECS** when you want AWS-native APIs, fewer moving parts, and no Kubernetes operational surface. Choose **[EKS](eks.md)** when you need K8s ecosystem (Helm charts, operators, HPA/custom metrics patterns from [Kubernetes](../../kubernetes.md)).
+Choose **ECS** when you want AWS-native APIs, fewer moving parts, and no Kubernetes operational surface. Choose **[EKS](eks.md)** when you need K8s ecosystem (Helm charts, operators, HPA/custom metrics patterns from [Kubernetes](../../../kubernetes/kubernetes.md)).
 
 ---

@@ -6,11 +6,11 @@
 ## Resources
 
 - **Deep Dives**
-	- [Trees](trees.md)
-	- [Tree Algorithms](tree-algorithms.md)
-	- [Graphs](graphs.md)
-	- [Graph Algorithms](graph-algorithms.md)
-	- [Sorting Algorithms](sorting-algorithms.md)
+	- [Trees](assets/trees.md)
+	- [Tree Algorithms](assets/tree-algorithms.md)
+	- [Graphs](assets/graphs.md)
+	- [Graph Algorithms](assets/graph-algorithms.md)
+	- [Sorting Algorithms](assets/sorting-algorithms.md)
 
 - **Other Resources** 
 	- [Computer Science Roadmap - roadmap.sh](https://roadmap.sh/computer-science) 

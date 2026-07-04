@@ -54,7 +54,7 @@ Compose is primarily a **local dev and integration** tool — not how most teams
 | Compose concept | Production equivalent |
 |-----------------|----------------------|
 | `services: api:` | ECS service / K8s Deployment |
-| `build:` / `image:` | Image from [ECR](aws/services/ecr.md) |
+| `build:` / `image:` | Image from [ECR](ecr.md) |
 | `command:` | Container command override in task definition / pod spec |
 | `environment:` / `env_file:` | Env vars, Secrets Manager, K8s Secrets |
 | `ports:` | Load balancer / Ingress |
@@ -93,9 +93,9 @@ flowchart LR
   CI --> Build --> Registry --> Orch
 ```
 
-1. **CI/CD** ([GitHub Actions](github-actions/github-actions.md)) runs on merge or tag: `docker build`, tag with git SHA or semver, push to registry.
-2. **Registry** ([ECR](aws/services/ecr.md)) stores immutable image tags. One build artifact, referenced by many services.
-3. **Orchestrator** ([ECS](aws/services/ecs.md) or [EKS](aws/services/eks.md)) pulls the image and runs containers with per-service config: command, env, replicas, load balancer, health checks.
+1. **CI/CD** ([GitHub Actions](../github-actions/github-actions.md)) runs on merge or tag: `docker build`, tag with git SHA or semver, push to registry.
+2. **Registry** ([ECR](ecr.md)) stores immutable image tags. One build artifact, referenced by many services.
+3. **Orchestrator** ([ECS](ecs.md) or [EKS](eks.md)) pulls the image and runs containers with per-service config: command, env, replicas, load balancer, health checks.
 
 **One image, many services:** a distributed monolith often ships a single image for the API and all consumers. Each ECS service / K8s Deployment uses the same `image:` URI but a different `command` (e.g. `node dist/api/app.js` vs `node dist/consumers/foo/app.js`). Deploy, scale, and roll out each service independently.
 
@@ -108,7 +108,7 @@ flowchart LR
 
 Compose rehearses **service topology** locally; ECS/EKS + IaC handle **operations** in prod.
 
-See also: [Deployment & Release Engineering](../../infrastructure/deployment-and-release-engineering.md) for release strategies, rollbacks, and feature flags.
+See also: [Deployment & Release Engineering](../../topics/infrastructure/deployment-and-release-engineering/deployment-and-release-engineering.md) for release strategies, rollbacks, and feature flags.
 
 ---
 ## Quick reference

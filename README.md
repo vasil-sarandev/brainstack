@@ -1,63 +1,43 @@
-# Brainstack - Vasil's Technological Knowledge Vault
+# Brainstack
 
-This repository contains a centralized place of storage for my personal notes & resources I find valuable in regards to different software engineering concepts, topics and technologies.
+Personal notes on software engineering - concepts, tools, and hands-on learning paths.
 
-The repository is made with the [Obisidian MD Reader](https://obsidian.md/) and uses its rich file links and tags, so in order for the navigation between files to properly work and to get the best experience for the vault, grab a copy of the repository and boot it as a Vault in Obsidian.
-
----
-## Topics
-
-- [Computer Science](computer-science.md)
-- [Software Design and Architecture](software-design-and-architecture.md)
-- [System Design](system-design.md)
-- [Backend Software Engineering](backend-software-engineering.md)
+Built for [Obsidian](https://obsidian.md/). Clone and open as a vault for wikilinks and graph navigation.
 
 ---
-## Languages
+## Start here
 
-- [Structured Query Language (SQL)](structured-query-language.md)
-- [NodeJS](nodejs.md)
-- [Java](java.md)
+| Section           | Entry point                                  | What goes here                          |
+| ----------------- | -------------------------------------------- | --------------------------------------- |
+| **Topics**        | [Topics](topics/topics.md)                   | Timeless concepts - design, build, ship |
+| **Languages**     | [Languages](languages/languages.md)          | Language-specific notes                 |
+| **Technologies**  | [Technologies](technologies/technologies.md) | Tool and framework reference            |
+| **Miscellaneous** | [Miscellaneous](misc/misc.md)                | Books, certs, interview prep            |
 
----
-## Technologies
+**Topics** splits into two peer areas:
 
-- [ExpressJS](express.md)
-- [MongoDB](mongodb.md)
-- [Docker](docker.md)
-- [Redis](redis.md)
-- [Apache Kafka](apache-kafka.md)
-- [Turborepo](turborepo.md)
-- [React](react.md)
-- [Redux & Redux Toolkit](redux-rtk.md)
-- [NextJS](nextjs.md)
-- [TypeORM](typeorm.md)
-- [PostgreSQL](postgresql.md)
-- [Amazon Web Services (AWS)](aws.md)
-- [Cursor](cursor.md)
-- [Claude Code](claude-code.md)
-- [GitHub Actions](github-actions.md)
+- **Software Engineering**: theory, design, backend craft
+- **Infrastructure**: deploy, release, cloud hands-on
+
+Tool details live under **Technologies** and are linked from topic notes — not duplicated.
 
 ---
-## Infrastructure
+## Conventions
 
-- [Deployment & Release Engineering](infrastructure/deployment-and-release-engineering.md)
-- [Infrastructure Hands On](infrastructure-hands-on.md)
-
----
-## Miscellaneous
-
-- [Books](books.md) 
-- [Certificates](certificates.md)
-- [Interview Preparation](interview-preparation.md)
+- **Hub notes** — each folder has an entry-point note (`topics.md`, `computer-science/computer-science.md`, etc.)
+- **Sub-topic folders** — each note gets its own folder with the hub note + optional `assets/` (topics, technologies, and languages)
+- **Tags** — `#topic`, `#infrastructure`, `#technology` for graph filtering
+- **Wikilinks** — Obsidian resolves short names; full paths work on GitHub
 
 ---
-## Resources
+## External resources
 
-- https://awesome-architecture.com/ (Curated list of awesome articles and resources to learn and practice software architecture, patterns and principles)
-- https://roadmaps.sh (Roadmaps for software engineering topics and technologies)
-- https://neetcode.io/ - Curated LeetCode problems
-- https://www.mooc.fi/en/ - University of Helsinki's Open Courses
-- https://www.edx.org - Open Courses from Top Universities & Companies
+Curated links worth revisiting.
+
+- https://awesome-architecture.com/ — architecture articles and patterns
+- https://roadmaps.sh — visual roadmaps for SE topics and technologies
+- https://neetcode.io/ — curated LeetCode problems
+- https://www.mooc.fi/en/ — University of Helsinki open courses
+- https://www.edx.org — open courses from universities and companies
 
 ---

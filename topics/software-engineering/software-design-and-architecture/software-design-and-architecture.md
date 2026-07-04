@@ -6,7 +6,7 @@
 ## Resources
 
 - **Deep Dives** 
-	- [Software Design Patterns](software-design-patterns.md)
+	- [Software Design Patterns](assets/software-design-patterns.md)
 
 - **Other Resources**
 	- [Software Design and Architecture roadmap - roadmap.sh](https://roadmap.sh/software-design-architecture)

@@ -19,7 +19,7 @@ Use [feature flags](feature-flags.md) for the first; deployment rollback for the
 ---
 ## Container rollback (ECS / EKS)
 
-Images in [ECR](../../technologies/aws/services/ecr.md) are **immutable by tag**. Keep previous tags — never overwrite `latest` in prod.
+Images in [ECR](ecr.md) are **immutable by tag**. Keep previous tags — never overwrite `latest` in prod.
 
 **ECS:**
 
@@ -92,14 +92,14 @@ Built into the pipeline from day one:
 - **Flags for risky features** — behaviour rollback without redeploy
 - **Backward-compatible migrations** — expand/contract, no big-bang schema changes with code deploy
 
-See [Infrastructure Hands On](infrastructure-hands-on.md) for hands-on ECS setup with health checks and CI push to ECR.
+See [Infrastructure Hands On](../../infrastructure-hands-on/infrastructure-hands-on.md) for hands-on ECS setup with health checks and CI push to ECR.
 
 ---
 ## Related
 
 - [Deployment Strategies](deployment-strategies.md) — blue/green enables instant traffic flip back
 - [Feature Flags](feature-flags.md)
-- [GitHub Actions](../../technologies/github-actions/github-actions.md) — CI that tags builds
-- [ECS](../../technologies/aws/services/ecs.md)
+- [GitHub Actions](../../../../../technologies/github-actions/github-actions.md) — CI that tags builds
+- [ECS](ecs.md)
 
 ---

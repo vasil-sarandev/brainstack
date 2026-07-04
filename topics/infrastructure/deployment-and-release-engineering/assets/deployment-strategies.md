@@ -18,7 +18,7 @@ Before strategy details — the unit you deploy is always a **built artifact**:
 | **Stored in** | ECR | S3, Artifactory |
 | **Deployed by** | Update task definition / Deployment → new tag | Copy file + restart process |
 
-Same pipeline shape; different packaging. See [Docker — Local vs Production](../../technologies/docker.md#local-vs-production).
+Same pipeline shape; different packaging. See [Docker — Local vs Production](../../../../../technologies/docker/docker.md#local-vs-production).
 
 ---
 ## Rolling deployment

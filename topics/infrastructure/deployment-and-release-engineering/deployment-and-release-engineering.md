@@ -4,7 +4,7 @@
 
 How software is **built once**, **shipped** as an immutable artifact, and **run** in production — plus strategies for releasing safely and recovering when things go wrong.
 
-Concept notes live here; tool-specific details stay under [technologies](../technologies/docker.md).
+Concept notes live here; tool-specific details stay under [technologies](../../../../technologies/docker/docker.md).
 
 ---
 ## Resources
@@ -15,13 +15,13 @@ Concept notes live here; tool-specific details stay under [technologies](../tech
 	- [Rollbacks](assets/rollbacks.md)
 
 - **Learning roadmap**
-	- [Infrastructure Hands On](infrastructure-hands-on.md) — hands-on projects (ECS, EKS, Terraform)
+	- [Infrastructure Hands On](../infrastructure-hands-on/infrastructure-hands-on.md) — hands-on projects (ECS, EKS, Terraform)
 
 - **Related technologies**
-	- [Docker](../technologies/docker.md) — images, compose, local vs prod
-	- [GitHub Actions](../technologies/github-actions/github-actions.md) — CI build and push
-	- [Amazon ECR](../technologies/aws/services/ecr.md) — image registry
-	- [Amazon ECS](../technologies/aws/services/ecs.md) / [EKS](../technologies/aws/services/eks.md) — run containers in prod
+	- [Docker](../../../../technologies/docker/docker.md) — images, compose, local vs prod
+	- [GitHub Actions](../../../../technologies/github-actions/github-actions.md) — CI build and push
+	- [Amazon ECR](ecr.md) — image registry
+	- [Amazon ECS](ecs.md) / [EKS](eks.md) — run containers in prod
 
 ---
 ## Core pipeline
@@ -41,7 +41,7 @@ flowchart LR
 
 | Path | Build output | Storage | Deploy |
 |------|--------------|---------|--------|
-| **Containers** | Docker image | [ECR](../technologies/aws/services/ecr.md) | ECS / EKS pulls tag, starts tasks/pods |
+| **Containers** | Docker image | [ECR](ecr.md) | ECS / EKS pulls tag, starts tasks/pods |
 | **Traditional** | JAR, tarball, binary | S3, Nexus | Copy to EC2, restart via systemd / CodeDeploy |
 
 CI never runs `git pull && npm install` on production servers. Production always runs a **known built thing**.
@@ -58,7 +58,7 @@ See [Deployment Strategies](assets/deployment-strategies.md) for rolling, blue/g
 | **Image** | Often `development` stage + volume mounts | `runtime` image from registry |
 | **Config** | `env_file`, compose env | Secrets Manager, SSM, K8s Secrets |
 
-Compose mirrors **service topology** (API + workers + Kafka + DB), not operational depth (autoscaling, multi-AZ, IAM). See [Docker — Local vs Production](../technologies/docker.md#local-vs-production).
+Compose mirrors **service topology** (API + workers + Kafka + DB), not operational depth (autoscaling, multi-AZ, IAM). See [Docker — Local vs Production](../../../../technologies/docker/docker.md#local-vs-production).
 
 ---
 ## Release safety

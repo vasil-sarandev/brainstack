@@ -2,19 +2,19 @@
 
 #infrastructure
 
-Learning roadmap - hands-on projects to go from "infra team handles it" to owning build → ship → run. Reference concepts live under [Deployment & Release Engineering](deployment-and-release-engineering.md).
+Learning roadmap - hands-on projects to go from "infra team handles it" to owning build → ship → run. Reference concepts live under [Deployment & Release Engineering](../deployment-and-release-engineering/deployment-and-release-engineering.md).
 
 ---
 ## Resources and tools
 
-1. **Docker** — [Docker](../technologies/docker.md)
-2. **Github actions** — [GitHub Actions](../technologies/github-actions/github-actions.md)
-3. **AWS:** Learning centre (AWS Cloud Practitioner course) is a great place to start. See [Amazon Web Services](../technologies/aws/aws.md) service notes for IAM, EC2, ECR, ECS, RDS, EKS, CloudWatch.
+1. **Docker** — [Docker](../../../technologies/docker/docker.md)
+2. **Github actions** — [GitHub Actions](../../../technologies/github-actions/github-actions.md)
+3. **AWS:** Learning centre (AWS Cloud Practitioner course) is a great place to start. See [Amazon Web Services](../../../technologies/aws/aws.md) service notes for IAM, EC2, ECR, ECS, RDS, EKS, CloudWatch.
 4. **DevOps fundamentals**: roadmaps.sh
 5. **API Gateway** — edge auth, throttling, routing (hands-on #2)
 6. **ALB** — public HTTP entry for ECS/EKS (hands-on #1)
 7. **Monitoring:** Prometheus, Grafana, Coralogix, Open Telemetry
-8. **Kubernetes** — [Kubernetes](../technologies/kubernetes.md)
+8. **Kubernetes** — [Kubernetes](../../../technologies/kubernetes/kubernetes.md)
 9. **Terraform**
 
 ---
@@ -30,10 +30,10 @@ Flow: `Client → ALB → ECS → RDS`
 
 - **VPC**: Default is pretty good for a starter point.
 	- **Security groups used for RDS/ECS**: Allow inbound traffic from personal IP + ECS only; Allow all outbound traffic; Disable all public incoming traffic.
-- **IAM:** GitHub OIDC identity provider + role scoped to the repo ([IAM](../technologies/aws/services/iam.md)); Task execution Role for ECS.
-- **ECR:** repository for the app image ([Reference for ECR-Github Actions hands-on](../technologies/github-actions/hands-on/ecr-github-actions-oidc.md))
+- **IAM:** GitHub OIDC identity provider + role scoped to the repo ([IAM](iam.md)); Task execution Role for ECS.
+- **ECR:** repository for the app image ([Reference for ECR-Github Actions hands-on](../../../technologies/github-actions/hands-on/ecr-github-actions-oidc.md))
 - **RDS:** PostgreSQL
-- **ECS:** Fargate cluster, task definition (`awslogs` → CloudWatch), service in private subnets ([ECS](../technologies/aws/services/ecs.md))
+- **ECS:** Fargate cluster, task definition (`awslogs` → CloudWatch), service in private subnets ([ECS](ecs.md))
 - **ALB:** internet-facing, target group → ECS service, listener (HTTPS preferred); health check on app path (e.g. `/healthz`)
 
 **CI (GitHub Actions)**
@@ -45,7 +45,7 @@ Flow: `Client → ALB → ECS → RDS`
 
 **Observability & scaling**
 
-- **CloudWatch alarms:** ECS running task count low, ALB 5xx, RDS CPU / free storage ([CloudWatch](../technologies/aws/services/cloudwatch.md))
+- **CloudWatch alarms:** ECS running task count low, ALB 5xx, RDS CPU / free storage ([CloudWatch](cloudwatch.md))
 - **ECS service auto scaling:** target tracking on CPU or `ALBRequestCountPerTarget` (min/max task count)
 - **RDS:** storage autoscaling + alarms — scale **instance class** or add **read replicas** when metrics warrant it; not the same as ECS task autoscaling
 
@@ -65,7 +65,7 @@ Builds on #1. Keep the ALB — Gateway sits in front of it.
 
 Builds on #2. Same app and edge pattern; swap the compute platform.
 
-- **EKS** cluster + managed node groups ([EKS](../technologies/aws/services/eks.md))
+- **EKS** cluster + managed node groups ([EKS](eks.md))
 - Deploy with Helm or manifests; **Ingress** (AWS Load Balancer Controller) creates the ALB
 - Keep API Gateway → VPC Link → Ingress ALB from #2
 - Pod autoscaling (HPA); node autoscaling (Karpenter or Cluster Autoscaler)

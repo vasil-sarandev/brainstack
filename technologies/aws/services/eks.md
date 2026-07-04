@@ -4,7 +4,7 @@
 
 **EKS** is AWS’s managed **Kubernetes** control plane. AWS runs the API server, etcd, and schedulers; you run **worker nodes** (managed node groups on [EC2](ec2.md), self-managed nodes, or **Fargate** profiles) and deploy workloads with standard K8s objects — Deployments, Services, Ingress, HPA.
 
-Kubernetes fundamentals: [Kubernetes](../../kubernetes.md). Images from [ECR](ecr.md). Container alternative without K8s: [ECS](ecs.md).
+Kubernetes fundamentals: [Kubernetes](../../../kubernetes/kubernetes.md). Images from [ECR](ecr.md). Container alternative without K8s: [ECS](ecs.md).
 
 Part of: [Amazon Web Services](aws.md).
 
@@ -96,7 +96,7 @@ spec:
 | Queue lag (SQS, Kafka) | KEDA ScaledObject |
 | ALB/request rate | Custom metric via CloudWatch or Prometheus |
 
-Helm charts often expose autoscaling as values (same idea as in [Kubernetes](../../kubernetes.md#replicacount-vs-autoscaling)):
+Helm charts often expose autoscaling as values (same idea as in [Kubernetes](../../../kubernetes/kubernetes.md#replicacount-vs-autoscaling)):
 
 ```yaml
 replicaCount: 2

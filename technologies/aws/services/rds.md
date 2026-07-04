@@ -4,7 +4,7 @@
 
 **RDS** runs managed relational databases — AWS handles provisioning, patching, backups, and failover. Common engines: **PostgreSQL**, MySQL, MariaDB, and **Aurora** (AWS’s PostgreSQL/MySQL-compatible storage layer).
 
-Part of: [Amazon Web Services](aws.md). App-side SQL: [PostgreSQL](../../postgresql.md). Observability: [CloudWatch](cloudwatch.md).
+Part of: [Amazon Web Services](aws.md). App-side SQL: [PostgreSQL](../../../postgresql/postgresql.md). Observability: [CloudWatch](cloudwatch.md).
 
 ---
 

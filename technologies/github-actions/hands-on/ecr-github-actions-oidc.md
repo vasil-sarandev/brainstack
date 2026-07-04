@@ -4,7 +4,7 @@
 
 Hands-on walkthrough for a common CI pattern: build a Docker image in GitHub Actions and push to AWS ECR — no long-lived AWS keys in the repo.
 
-Part of: [GitHub Actions](../github-actions.md). AWS background: [ECR](../../aws/services/ecr.md), [IAM](../../aws/services/iam.md).
+Part of: [GitHub Actions](../github-actions.md). AWS background: [ECR](ecr.md), [IAM](iam.md).
 
 Reference implementation: [showtimex](https://github.com/vasil-sarandev/showtimex) — workflow [`.github/workflows/ci-cd.yml`](https://github.com/vasil-sarandev/showtimex/blob/main/.github/workflows/ci-cd.yml), app deployment notes in [`docs/deployment.md`](https://github.com/vasil-sarandev/showtimex/blob/main/docs/deployment.md).
 

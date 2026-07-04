@@ -4,7 +4,7 @@
 
 Amazon **ECR** is AWS’s managed **container image registry**. It stores, versions, and distributes Docker/OCI images privately within your AWS account — the natural place to land images built in CI before **ECS**, **EKS**, or **Fargate** pull and run them.
 
-Part of the broader AWS container story: [Amazon Web Services](aws.md). Images are run on [ECS](ecs.md), [EKS](eks.md), or [EC2](ec2.md). For image builds, see [Docker](docker.md). For CI push, see [GitHub Actions](github-actions.md).
+Part of the broader AWS container story: [Amazon Web Services](aws.md). Images are run on [ECS](ecs.md), [EKS](eks.md), or [EC2](ec2.md). For image builds, see [Docker](../../../docker/docker.md). For CI push, see [GitHub Actions](../../../github-actions/github-actions.md).
 
 ---
 
@@ -23,7 +23,7 @@ Part of the broader AWS container story: [Amazon Web Services](aws.md). Images a
 	- [aws-actions/amazon-ecr-login](https://github.com/aws-actions/amazon-ecr-login)
 
 - **Hands-on**
-	- [ECR push via GitHub Actions (OIDC)](../../github-actions/hands-on/ecr-github-actions-oidc.md) — full workflow + AWS OIDC setup (Showtimex reference)
+	- [ECR push via GitHub Actions (OIDC)](../../../github-actions/hands-on/ecr-github-actions-oidc.md) — full workflow + AWS OIDC setup (Showtimex reference)
 
 ---
 
@@ -83,7 +83,7 @@ Minimum IAM for push to a single repository:
 
 Pull-only workloads (ECS execution role, deploy host) need `ecr:BatchGetImage` and `ecr:GetDownloadUrlForLayer` on the target repository.
 
-**Prefer OIDC in CI** over storing `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` in GitHub Secrets: the workflow requests a short-lived token from GitHub, assumes an IAM role via `sts:AssumeRoleWithWebIdentity`, then pushes. Setup details: [ECR push via GitHub Actions (OIDC)](../../github-actions/hands-on/ecr-github-actions-oidc.md).
+**Prefer OIDC in CI** over storing `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` in GitHub Secrets: the workflow requests a short-lived token from GitHub, assumes an IAM role via `sts:AssumeRoleWithWebIdentity`, then pushes. Setup details: [ECR push via GitHub Actions (OIDC)](../../../github-actions/hands-on/ecr-github-actions-oidc.md).
 
 ---
 
@@ -153,4 +153,4 @@ GitHub repo secrets (OIDC path): `AWS_ROLE_ARN`, `AWS_REGION` — no static AWS 
 ---
 ## Hands-on
 
-- [ECR push via GitHub Actions (OIDC)](../../github-actions/hands-on/ecr-github-actions-oidc.md) — OIDC provider, IAM trust policy, scoped ECR permissions, and full workflow (Showtimex).
+- [ECR push via GitHub Actions (OIDC)](../../../github-actions/hands-on/ecr-github-actions-oidc.md) — OIDC provider, IAM trust policy, scoped ECR permissions, and full workflow (Showtimex).

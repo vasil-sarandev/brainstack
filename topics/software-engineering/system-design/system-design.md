@@ -8,13 +8,13 @@ In software engineering, system design is a phase in the software development pr
 ## Resources
 
 - **Deep Dives**
-	- [How to do a System Design of a Software Application](how-to-do-a-system-design.md)
+	- [How to do a System Design of a Software Application](assets/how-to-do-a-system-design.md)
 
 - **Case Studies** 
-	- [TicketMaster System Design](system-design-ticketmaster.md)
-	- [Bitly System Design](system-design-bitly.md)
-	- [Twitter System Design](system-design-twitter.md)
-	- [Instagram System Design](system-design-instagram.md)
+	- [TicketMaster System Design](assets/case-studies/system-design-ticketmaster.md)
+	- [Bitly System Design](assets/case-studies/system-design-bitly.md)
+	- [Twitter System Design](assets/case-studies/system-design-twitter.md)
+	- [Instagram System Design](assets/case-studies/system-design-instagram.md)
 
 - **Other Resources**
 	- [System Design roadmap - roadmap.sh](https://roadmap.sh/system-design)
@@ -99,7 +99,7 @@ Message Queues and Brokers are intermediaries that enable **asynchronous communi
 ---
 ## Databases
 
-[Backend Software Engineering Topic - Databases](backend-software-engineering.md#Databases)
+[Backend Software Engineering Topic - Databases](../backend-software-engineering/backend-software-engineering.md#Databases)
 
 ---
 

@@ -14,7 +14,7 @@ Part of: [Amazon Web Services](aws.md). Shows up everywhere: [ECR](ecr.md) pull/
 - [IAM policy reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
 - [Roles terms and concepts](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
 - [OIDC federation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html)
-- [Hands-on: ECR push via GitHub Actions (OIDC)](../../github-actions/hands-on/ecr-github-actions-oidc.md)
+- [Hands-on: ECR push via GitHub Actions (OIDC)](../../../github-actions/hands-on/ecr-github-actions-oidc.md)
 
 ---
 
@@ -55,7 +55,7 @@ Part of: [Amazon Web Services](aws.md). Shows up everywhere: [ECR](ecr.md) pull/
 
 **Human admin** — IAM user or SSO (IAM Identity Center) → group with admin or scoped policies. MFA on privileged accounts.
 
-**CI/CD (GitHub Actions)** — OIDC identity provider + IAM role with trust scoped to `repo:org/name`. No access keys in GitHub Secrets. See [ECR push via GitHub Actions (OIDC)](../../github-actions/hands-on/ecr-github-actions-oidc.md).
+**CI/CD (GitHub Actions)** — OIDC identity provider + IAM role with trust scoped to `repo:org/name`. No access keys in GitHub Secrets. See [ECR push via GitHub Actions (OIDC)](../../../github-actions/hands-on/ecr-github-actions-oidc.md).
 
 **EC2 workload** — instance profile on the launch template; role permissions for S3, SSM, [ECR](ecr.md) pull, etc.
 

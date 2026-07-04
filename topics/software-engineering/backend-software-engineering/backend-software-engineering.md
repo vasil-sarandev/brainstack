@@ -6,9 +6,9 @@
 ## Resources
 
 - **Deep Dives**
-	- [Authentication](authentication.md)
-	- [Database Normalization](database-normalization.md)
-	- [Scaling Databases](scaling-databases.md)
+	- [Authentication](assets/authentication.md)
+	- [Database Normalization](assets/database-normalization.md)
+	- [Scaling Databases](assets/scaling-databases.md)
 
 ---
 ## Internet & HTTP
@@ -155,17 +155,17 @@ APIs allow software components to communicate:
 ---
 ## Distributed Systems
 
-[System Design Topic - Distributed Systems](system-design.md#Distributed%20Systems)
+[System Design Topic - Distributed Systems](../system-design/system-design.md#Distributed%20Systems)
 
 ---
 ## Architectural Styles 
 
-[Software Design and Architecture Topic - Architectural Styles](software-design-and-architecture.md#Architectural%20Styles)
+[Software Design and Architecture Topic - Architectural Styles](../software-design-and-architecture/software-design-and-architecture.md#Architectural%20Styles)
 
 ---
 ## Object-Oriented Programming
 
-[Software Design and Architecture Topic - OOP](software-design-and-architecture.md#Object-Oriented%20Programming)
+[Software Design and Architecture Topic - OOP](../software-design-and-architecture/software-design-and-architecture.md#Object-Oriented%20Programming)
 
 ---
 ## Web Security
@@ -201,14 +201,14 @@ Messages are signed using the **private key**, and authenticity can be verified 
 ---
 ## Caching
 
-[System Design Topic - Caching](system-design.md#Caching)
+[System Design Topic - Caching](../system-design/system-design.md#Caching)
 
 ---
 ## CI/CD & Testing
 
 Automates build and deployment:
 
-- **CI/CD:** Automated testing, builds, deployment — see [Deployment & Release Engineering](../infrastructure/deployment-and-release-engineering.md)
+- **CI/CD:** Automated testing, builds, deployment — see [Deployment & Release Engineering](../../infrastructure/deployment-and-release-engineering/deployment-and-release-engineering.md)
 - **Tests:** Unit, Integration, Functional
 
 ---
