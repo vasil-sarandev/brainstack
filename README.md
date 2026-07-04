@@ -39,11 +39,16 @@ The repository is made with the [Obisidian MD Reader](https://obsidian.md/) and 
 - [GitHub Actions](github-actions.md)
 
 ---
+## Infrastructure
+
+- [Deployment & Release Engineering](infrastructure/deployment-and-release-engineering.md)
+- [Infrastructure Hands On](infrastructure-hands-on.md)
+
+---
 ## Miscellaneous
 
 - [Books](books.md) 
 - [Certificates](certificates.md)
-- [Cloud and infrastructure readiness](cloud-and-infrastructure-readiness.md)
 - [Interview Preparation](interview-preparation.md)
 
 ---

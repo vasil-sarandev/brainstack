@@ -108,6 +108,8 @@ flowchart LR
 
 Compose rehearses **service topology** locally; ECS/EKS + IaC handle **operations** in prod.
 
+See also: [Deployment & Release Engineering](../../infrastructure/deployment-and-release-engineering.md) for release strategies, rollbacks, and feature flags.
+
 ---
 ## Quick reference
 

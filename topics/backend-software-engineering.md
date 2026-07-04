@@ -208,7 +208,7 @@ Messages are signed using the **private key**, and authenticity can be verified 
 
 Automates build and deployment:
 
-- **CI/CD:** Automated testing, builds, deployment
+- **CI/CD:** Automated testing, builds, deployment — see [Deployment & Release Engineering](../infrastructure/deployment-and-release-engineering.md)
 - **Tests:** Unit, Integration, Functional
 
 ---
