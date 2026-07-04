@@ -26,7 +26,7 @@ Flow: `Client → ALB → ECS → RDS`
 
 - **VPC**: Default is pretty good for a starter point.
 	- **Security groups used for RDS/ECS**: Allow inbound traffic from personal IP + ECS only; Allow all outbound traffic; Disable all public incoming traffic.
-- **IAM:** GitHub OIDC identity provider + role scoped to the repo ([IAM](../technologies/aws/services/iam.md))
+- **IAM:** GitHub OIDC identity provider + role scoped to the repo ([IAM](../technologies/aws/services/iam.md)); Task execution Role for ECS.
 - **ECR:** repository for the app image ([Reference for ECR-Github Actions hands-on](ecr-github-actions-oidc.md))
 - **RDS:** PostgreSQL 
 - **ECS:** Fargate cluster, task definition (`awslogs` → CloudWatch), service in private subnets ([ECS](../technologies/aws/services/ecs.md))
