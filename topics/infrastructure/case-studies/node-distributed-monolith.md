@@ -4,9 +4,7 @@
 
 Reference project: one TypeScript repo, one Docker image, three processes (API + two Kafka consumers). Pipeline shape: **GitHub Actions → ECR → ECS + MSK**.
 
-**Repo:** [node-distributed-monolith-starter](https://github.com/vasil-sarandev/node-distributed-monolith-starter)
-
-Related: [ECR push via GitHub Actions (OIDC)](../../../../technologies/github-actions/hands-on/ecr-github-actions-oidc.md), [Deploy to ECS](../deployment-targets/ecs.md).
+**Repo:** [node-distributed-monolith-starter](https://github.com/vasil-sarandev/node-distributed-monolith-starter) [commit snapshot](https://github.com/vasil-sarandev/node-distributed-monolith/commit/31b0ebaf536eb2b8331f0ba1f9a88d69f635051a)
 
 ---
 
@@ -41,6 +39,7 @@ Same process topology; different orchestration and ops depth.
 | **Config** | `environment:` in `docker-compose.yaml` | Task definition env + SSM / Secrets Manager |
 | **HTTP** | `localhost:3000` | ALB → API tasks in private subnets |
 | **Deploy** | `npm run dev` | GHA → ECR push → ECS rolling update |
+| **Observability** | Docker logs to terminal | CloudWatch Logs + metrics; optional Prometheus + Grafana |
 
 Compose mirrors **who talks to whom**, not production concerns (multi-AZ, autoscaling, IAM, health-checked rollouts). See [Docker — Local vs Production](../../../../technologies/docker/docker.md).
 
@@ -89,5 +88,24 @@ Three ECS services, one ECR image URI. API gets the ALB; consumers have no publi
 Each task definition shares the same `image` field; differs on `command`, env, CPU/RAM. Env at runtime (`KAFKA_BROKERS`, consumer group IDs, `PORT`) — not baked into the image. Task execution role pulls from ECR and writes logs.
 
 **Deploy job:** extend the GitHub OIDC role with `ecs:RegisterTaskDefinition`, `ecs:UpdateService`, `iam:PassRole`. After each image push, register a new task definition revision per service (new tag), then `update-service --force-new-deployment`. Services roll out independently.
+
+---
+
+## Observability
+
+| Layer | [CloudWatch](../../../../technologies/aws/services/cloudwatch.md) (AWS-native) | Prometheus + Grafana |
+| --- | --- | --- |
+| **Logs** | Task `awslogs` driver → log groups per service | Scrape or ship logs separately (e.g. Loki); not the default ECS path |
+| **Metrics** | ECS service CPU/memory, ALB request count & 5xx, MSK broker metrics | App + Kafka exporters; custom dashboards; **consumer lag** for scaling signals |
+| **Dashboards** | CloudWatch dashboards | Grafana |
+| **Alerts** | CloudWatch Alarms → SNS / on-call | Grafana alerts or Alertmanager |
+
+**What to watch for this stack:**
+
+- **API** — ALB target health, 5xx rate, p95 latency, ECS `RunningTaskCount` vs desired
+- **Consumers** — consumer group **lag** per topic (`user-marketing-consent`, `product-restocked`); scale signals in [Autoscaling](../deployment-and-release-engineering/assets/autoscaling.md)
+- **Deploys** — failed task launches, circuit breaker rollbacks
+
+CloudWatch is the straightforward starting point on ECS (logs + built-in metrics + alarms). Prometheus + Grafana add richer app/Kafka metrics and pair well with lag-based consumer autoscaling — common when outgrowing default dashboards. See [Backend — Observability](../../software-engineering/backend-software-engineering/backend-software-engineering.md#observability), [System Design — Monitoring](../../software-engineering/system-design/system-design.md#monitoring).
 
 ---
