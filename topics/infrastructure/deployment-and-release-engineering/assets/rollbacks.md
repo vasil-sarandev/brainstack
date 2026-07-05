@@ -92,7 +92,7 @@ Built into the pipeline from day one:
 - **Flags for risky features** — behaviour rollback without redeploy
 - **Backward-compatible migrations** — expand/contract, no big-bang schema changes with code deploy
 
-See [Infrastructure Hands On](../../infrastructure-hands-on/infrastructure-hands-on.md) for hands-on ECS setup with health checks and CI push to ECR.
+See [node-distributed-monolith case study](../../case-studies/node-distributed-monolith.md) for ECS + ECR CI setup.
 
 ---
 ## Related

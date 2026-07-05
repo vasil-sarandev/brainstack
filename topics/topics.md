@@ -16,7 +16,7 @@ Fundamentals, design, and backend craft — interview material and day-to-day ar
 ---
 ## Infrastructure
 
-How code gets built, shipped, and run in production — plus a hands-on roadmap for cloud and DevOps.
+How code gets built, shipped, and run in production — deployment targets, release engineering, and case studies.
 
 → [Infrastructure](infrastructure/infrastructure.md)
 
