@@ -12,14 +12,11 @@ Built for [Obsidian](https://obsidian.md/). Clone and open as a vault for wikili
 | **Topics**        | [Topics](topics/topics.md)                   | Timeless concepts - design, build, ship |
 | **Languages**     | [Languages](languages/languages.md)          | Language-specific notes                 |
 | **Technologies**  | [Technologies](technologies/technologies.md) | Tool and framework reference            |
-| **Miscellaneous** | [Miscellaneous](misc/misc.md)                | Books, certs, interview prep            |
 
 **Topics** splits into two peer areas:
 
 - **Software Engineering**: theory, design, backend craft
 - **Infrastructure**: deploy, release, cloud hands-on
-
-Tool details live under **Technologies** and are linked from topic notes — not duplicated.
 
 ---
 ## Conventions
