@@ -1,4 +1,4 @@
-# Case study: node-distributed-monolith on AWS
+# Case study: Node-distributed-monolith on AWS ECS
 
 #infrastructure #case-study
 

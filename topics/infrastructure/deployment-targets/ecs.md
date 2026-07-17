@@ -6,6 +6,8 @@ AWS-native **container** orchestration: task definitions, services, Fargate. Typ
 
 Parent: [Deployment targets](deployment-targets.md). Service details: [AWS ECS](../../../technologies/aws/services/ecs.md), [ECR](../../../technologies/aws/services/ecr.md).
 
+Case study: [Node-distributed-monolith on AWS ECS](ecs-node-distributed-monolith.md)
+
 ---
 
 ## Pipeline shape
