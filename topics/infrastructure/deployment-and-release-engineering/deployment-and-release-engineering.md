@@ -12,6 +12,7 @@ Concept notes live here; tool-specific details stay under [technologies](../../.
 - **Deep Dives**
 	- [Deployment Strategies](assets/deployment-strategies.md)
 	- [Autoscaling](assets/autoscaling.md)
+	- [Traffic Routing & Service Discovery](assets/traffic-routing-and-service-discovery.md)
 	- [Feature Flags](assets/feature-flags.md)
 	- [Rollbacks](assets/rollbacks.md)
 

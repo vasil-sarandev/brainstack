@@ -4,7 +4,7 @@
 
 Adjust **how many copies** of a workload run (or **how many VMs** back them) based on load — without manual deploys. Distinct from [deployment strategies](deployment-strategies.md), which change **version**; autoscaling changes **count**.
 
-Parent: [Deployment & Release Engineering](../deployment-and-release-engineering.md). Service deep dives: [EC2](../../../technologies/aws/services/ec2.md#scaling), [ECS](../../../technologies/aws/services/ecs.md#scaling), [Kubernetes — Scaling](../../../technologies/kubernetes/kubernetes.md#scaling).
+Parent: [Deployment & Release Engineering](../deployment-and-release-engineering.md). Service deep dives: [EC2](../../../../technologies/aws/services/ec2.md#scaling), [ECS](../../../../technologies/aws/services/ecs.md#scaling), [Kubernetes — Scaling](../../../../technologies/kubernetes/kubernetes.md#scaling).
 
 ---
 ## Who scales what?
@@ -114,6 +114,6 @@ HPA adds pods; node autoscaler adds machines. Both may be needed under load.
 - **Scale stateless tiers** — sessions and sticky data need ALB stickiness or external store (Redis, DB).
 - **Cooldowns** — scale-out fast, scale-in slower to avoid flapping (`scale_in_cooldown` / HPA stabilization).
 - **Min > 0 in prod** — at least two replicas across AZs for HA on APIs.
-- **Alarms alongside autoscaling** — low running task/pod count, ALB 5xx, queue lag — [CloudWatch](../../../technologies/aws/services/cloudwatch.md).
+- **Alarms alongside autoscaling** — low running task/pod count, ALB 5xx, queue lag — [CloudWatch](../../../../technologies/aws/services/cloudwatch.md).
 
 ---

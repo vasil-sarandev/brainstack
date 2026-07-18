@@ -39,7 +39,7 @@ Public HTTP: **ALB** → target group → tasks in private subnets.
 
 A single ECR tag can back multiple ECS services with different `command` overrides — API vs background workers vs Kafka consumers. Each service deploys and scales independently.
 
-See [node-distributed-monolith case study](../case-studies/node-distributed-monolith.md).
+See [deploy-to-ecs-node-modulith](deploy-to-ecs-node-modulith.md)
 
 ---
 
