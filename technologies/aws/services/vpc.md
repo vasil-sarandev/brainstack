@@ -30,7 +30,9 @@ Part of: [Amazon Web Services](aws.md). Security groups are VPC-scoped; IAM cont
   Per-subnet (or shared) rules: “traffic to `10.0.0.0/16` stays local; `0.0.0.0/0` → IGW or NAT.” Misconfigured routes are a common cause of “can’t reach the internet” or “can’t reach RDS.”
 
 - **Internet Gateway (IGW)**  
-  Attached to the VPC; allows bidirectional internet access for resources with public IPs in public subnets. ALBs for public HTTP APIs are typically placed here.
+  Attached to the VPC; allows bidirectional internet access for resources with public IPs in public subnets. ALBs for public HTTP APIs are typically placed here.  
+  **Only crossed once** — the boundary hop between "outside the VPC" and "inside the VPC" (client → ALB, or a task → ECR/CloudWatch). Traffic between resources *inside* the VPC (ALB → ECS task, ECS task → RDS/MSK) never touches the IGW at all — that's pure internal routing + security groups, same whether or not an IGW even exists.  
+  **Default VPC** in every region already has one attached, with every subnet's route table pointing `0.0.0.0/0` at it — i.e. every subnet in a default VPC is already "public." Convenient for quick tests (no NAT Gateway needed for outbound internet access), but means there's no private subnet to fall back on without creating one.
 
 - **NAT Gateway**  
   Managed outbound-only internet for private subnets (pull container images, OS updates, external APIs). One NAT per AZ is common for HA; NAT has hourly + data processing cost.
