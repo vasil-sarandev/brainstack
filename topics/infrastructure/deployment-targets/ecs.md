@@ -4,8 +4,6 @@
 
 AWS-native **container** orchestration: task definitions, services, Fargate. Typical path for Dockerized APIs and workers when you do not want to operate Kubernetes.
 
-Parent: [Deployment targets](deployment-targets.md). Service details: [AWS ECS](../../../technologies/aws/services/ecs.md), [ECR](../../../technologies/aws/services/ecr.md).
-
 Case study: [Node-distributed-monolith on AWS ECS](ecs-node-distributed-monolith.md)
 
 ---
@@ -24,12 +22,12 @@ ECR is the artifact store. **Push ≠ deploy** — ECS must reference the new ta
 
 ## Core objects
 
-| Object | Role |
-| --- | --- |
-| **Task definition** | Image URI, CPU/RAM, env, secrets, command, log driver |
-| **Task** | One running instance of a task definition |
-| **Service** | Keeps N tasks up, rolling deploys, optional ALB registration |
-| **Cluster** | Logical grouping (Fargate or EC2 capacity) |
+| Object              | Role                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| **Task definition** | Image URI, CPU/RAM, env, secrets, command, log driver        |
+| **Task**            | One running instance of a task definition                    |
+| **Service**         | Keeps N tasks up, rolling deploys, optional ALB registration |
+| **Cluster**         | Logical grouping (Fargate or EC2 capacity)                   |
 
 Public HTTP: **ALB** → target group → tasks in private subnets.
 
@@ -54,10 +52,10 @@ See [deploy-to-ecs-node-modulith](deploy-to-ecs-node-modulith.md)
 
 ## ECS vs EKS
 
-| ECS | EKS |
-| --- | --- |
+| ECS                       | EKS                            |
+| ------------------------- | ------------------------------ |
 | Task definition + service | Deployment + Service + Ingress |
-| AWS APIs, Fargate-first | Kubernetes manifests / Helm |
-| Less operational surface | Portable K8s ecosystem |
+| AWS APIs, Fargate-first   | Kubernetes manifests / Helm    |
+| Less operational surface  | Portable K8s ecosystem         |
 
 Same Docker image and ECR push; different deploy config format. See [Deploy to EKS](eks.md).

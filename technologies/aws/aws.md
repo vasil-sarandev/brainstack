@@ -17,6 +17,7 @@
 	- [AWS RDS (Relational Database Service)](rds.md)
 	- [AWS MSK (Managed Streaming for Apache Kafka)](msk.md)
 	- [AWS ALB (Application Load Balancer) & Target Groups](alb.md)
+	- [AWS SSM (Systems Manager)](ssm.md)
 
 ---
 
@@ -41,6 +42,7 @@
   - **[AWS CloudWatch](cloudwatch.md)** – Metrics, logs, and alarms; default observability and scaling signal source for EC2, ECS, ALB, and custom apps.
   - **AWS Fargate** – Serverless compute engine for containers; runs ECS (and EKS) tasks without managing EC2 instances.
   - **[AWS ALB (Application Load Balancer) & Target Groups](alb.md)** – Layer 7 load balancer that routes HTTP/HTTPS traffic to targets such as EC2 instances, ECS tasks, or IP addresses; lives under the EC2 console for historical reasons only.
+  - **[AWS SSM (Systems Manager)](ssm.md)** – Umbrella product: Parameter Store (config/secrets), Session Manager (shell access, no SSH/open ports), Run Command (remote script execution) — the last two power agentless CI/CD deploys to EC2.
   - **[AWS MSK (Managed Streaming for Apache Kafka)](msk.md)** – Managed Kafka brokers; client auth and encryption-in-transit are separate settings, and the latter is fixed at cluster creation.
   - **AWS Elastic Beanstalk** – Platform-as-a-Service (PaaS) to deploy and scale web apps automatically (uses EC2, S3, RDS, etc. under the hood).
 
