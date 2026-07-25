@@ -291,7 +291,7 @@ Performance antipatterns in system design refer to common mistakes or suboptimal
 	Instrumentation is a critical part of the monitoring process. You can make meaningful decisions about the performance and health of a system only if you first capture the data that enables you to make these decisions. The information that you gather by using instrumentation should be sufficient to enable you to assess performance and diagnose problems. 
 - **Common Tools**
 	- Open Telemetry - Instrumentation
-	- Prometheus + Grafana - Health, Availability & Performance Monitoring
+	- [Prometheus + Grafana](../../../technologies/prometheus-grafana/prometheus-grafana.md) - Health, Availability & Performance Monitoring
 	- DataDog / NewRelic - Health, Availability & Performance Monitoring
 
 ---

@@ -247,6 +247,6 @@ Ability to infer internal system state from outputs:
 - **Logs:** Text-based events
 - **Traces:** End-to-end request path
 
-**Tools:** Prometheus, Grafana, ELK Stack, OpenTelemetry
+**Tools:** [Prometheus & Grafana](../../../technologies/prometheus-grafana/prometheus-grafana.md), ELK Stack, OpenTelemetry
 
 ---

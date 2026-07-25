@@ -28,6 +28,7 @@ Tool-specific reference — frameworks, databases, cloud services, and dev tooli
 - [Kubernetes](kubernetes/kubernetes.md)
 - [GitHub Actions](github-actions/github-actions.md)
 - [Amazon Web Services (AWS)](aws/aws.md)
+- [Prometheus & Grafana](prometheus-grafana/prometheus-grafana.md)
 
 ---
 ## Tooling & monorepo

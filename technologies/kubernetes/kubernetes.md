@@ -56,7 +56,7 @@ autoscaling:
     targetCpuPercent: 80
 ```
 
-**Custom Prometheus metric** — more meaningful for specific workloads. For example, an HTTP service might expose a metric representing % of workers actively handling a request, computed via a recording rule from raw gauges the app emits. The HPA watches that instead of (or alongside) raw CPU.
+**Custom [Prometheus](../prometheus-grafana/prometheus-grafana.md) metric** — more meaningful for specific workloads. For example, an HTTP service might expose a metric representing % of workers actively handling a request, computed via a recording rule from raw gauges the app emits. The HPA watches that instead of (or alongside) raw CPU.
 
 ```yaml
 autoscaling:
