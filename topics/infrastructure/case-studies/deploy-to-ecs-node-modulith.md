@@ -103,11 +103,11 @@ One shared `ecsTaskExecutionRole` (AWS-managed `AmazonECSTaskExecutionRolePolicy
 
 ### 5. Task definitions
 
-| Task def | Command override | Port mapping | Env |
-| --- | --- | --- | --- |
-| `api-task` | *(none — image's default `CMD`)* | `3000` | `PORT`, `NODE_ENV`, `KAFKA_BROKERS` |
-| `user-marketing-consumer-task` | `node,dist/consumers/user-marketing-consumer/index.js` | none | `KAFKA_CLIENT_ID`, `KAFKA_GROUP_ID`, `KAFKA_BROKERS` |
-| `product-restocked-consumer-task` | `node,dist/consumers/product-restocked/index.js` | none | `KAFKA_CLIENT_ID`, `KAFKA_GROUP_ID`, `KAFKA_BROKERS` |
+| Task def                          | Command override                                       | Port mapping | Env                                                  |
+| --------------------------------- | ------------------------------------------------------ | ------------ | ---------------------------------------------------- |
+| `api-task`                        | *(none — image's default `CMD`)*                       | `3000`       | `PORT`, `NODE_ENV`, `KAFKA_BROKERS`                  |
+| `user-marketing-consumer-task`    | `node,dist/consumers/user-marketing-consumer/index.js` | none         | `KAFKA_CLIENT_ID`, `KAFKA_GROUP_ID`, `KAFKA_BROKERS` |
+| `product-restocked-consumer-task` | `node,dist/consumers/product-restocked/index.js`       | none         | `KAFKA_CLIENT_ID`, `KAFKA_GROUP_ID`, `KAFKA_BROKERS` |
 
 ### 6. ALB + target group
 
