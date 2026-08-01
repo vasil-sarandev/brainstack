@@ -15,7 +15,8 @@ Concept notes here; tool reference under [Technologies](../../../technologies/te
 		- [EC2](deployment-targets/ec2.md) · [ECS](deployment-targets/ecs.md) · [EKS](deployment-targets/eks.md) · [S3 static SPA](deployment-targets/s3-static-spa.md)
 
 - **Case Studies**
-	- [ecs-node-distributed-monolith](ecs-node-distributed-monolith.md) — one image, API + Kafka consumers, GitHub Actions → ECR → ECS, Obeservability (CloudWatch + Prometheus & Grafana)
+	- [deploy-to-ecs-node-modulith](deploy-to-ecs-node-modulith.md) — one image, API + Kafka consumers, GitHub Actions → ECR → ECS
+	- [deploy-to-ec2-docker-showtimex](deploy-to-ec2-docker-showtimex.md) - one image, API + database, Github Actions -> ECR -> EC2
 
 
 ---
