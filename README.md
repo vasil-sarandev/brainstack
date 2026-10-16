@@ -12,6 +12,7 @@ Built for [Obsidian](https://obsidian.md/). Clone and open as a vault for wikili
 | **Topics**        | [Topics](topics/topics.md)                   | Timeless concepts - design, build, ship |
 | **Languages**     | [Languages](languages/languages.md)          | Language-specific notes                 |
 | **Technologies**  | [Technologies](technologies/technologies.md) | Tool and framework reference            |
+| **Miscellaneous** | [Books](miscellaneous/Books.md)              | Reading lists and other odds and ends   |
 
 **Topics** splits into two peer areas:
 
