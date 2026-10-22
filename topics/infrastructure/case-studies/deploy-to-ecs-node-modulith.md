@@ -2,7 +2,7 @@
 
 #infrastructure #case-study
 
-Reference project: one TypeScript repo, one Docker image, three processes (API + two Kafka consumers) — a [modular monolith](../deployment-and-release-engineering/assets/modular-monolith.md). Pipeline shape: **GitHub Actions → ECR → ECS + MSK**.
+Reference project: one TypeScript repo, one Docker image, three processes (API + two Kafka consumers) — a [modular monolith](../deployment-architectures/modular-monolith.md). Pipeline shape: **GitHub Actions → ECR → ECS + MSK**.
 
 **Repo:** https://github.com/vasil-sarandev/node-modulith
 **Commit snapshot:** 73af16c0c7ed1e6e5e29101aadbb9d64be733ed9

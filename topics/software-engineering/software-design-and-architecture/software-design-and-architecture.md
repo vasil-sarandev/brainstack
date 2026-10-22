@@ -124,11 +124,11 @@ These principles guide the design of maintainable and scalable software architec
 Architectural styles define the overall organization of a software system.
 
 - **Client-Server**: Clients send requests to a server for processing.
-- **Monolithic**: A single, integrated system with high coupling.
-- **Modular Monolith**: One codebase split into well-bounded modules, often deployed as several process roles (API, consumers, workers). See [Modular Monolith Deployments](../../infrastructure/deployment-and-release-engineering/assets/modular-monolith.md).
+- **Monolithic**: A single, integrated system with high coupling. See [Monolith](../../infrastructure/deployment-architectures/monolith.md).
+- **Modular Monolith**: One codebase split into well-bounded modules, often deployed as several process roles (API, consumers, workers). See [Modular Monolith](../../infrastructure/deployment-architectures/modular-monolith.md).
 - **Service-Oriented**: A collection of self-contained services.
 - **Layered**: Divides the system into layers with specific responsibilities. (controller -> service -> repository is an example).
-- **Microservices**: Small, independent services that can be developed and deployed independently.
+- **Microservices**: Small, independent services that can be developed and deployed independently. See [Microservices](../../infrastructure/deployment-architectures/microservices.md).
 - **Event-Driven**: The system reacts to events rather than continuously polling for changes.
 - **Component-based**: Systems are composed of reusable components.
 - **Domain-Driven Design**: Focuses on the business domain and entities.

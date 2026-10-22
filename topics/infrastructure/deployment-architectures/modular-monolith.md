@@ -4,9 +4,9 @@
 
 **One codebase, one image, many deployments.** The app is split into process roles (API, read API, write API, Kafka consumers, workers) and each role runs as its own ECS service / K8s Deployment. Same artifact everywhere; only `command`, env vars, replicas and resources differ.
 
-The common setup at scale — sits between a classic monolith (one process does everything) and microservices (separate repos, images, databases).
+The common setup at scale — sits between a classic [monolith](monolith.md) (one process does everything) and [microservices](microservices.md) (separate deployables per service, own databases). Comparison: [Deployment Architectures](deployment-architectures.md).
 
-Parent: [Deployment & Release Engineering](../deployment-and-release-engineering.md). Worked example: [node-modulith on ECS](../../case-studies/deploy-to-ecs-node-modulith.md) · repo: https://github.com/vasil-sarandev/node-modulith
+Parent: [Deployment Architectures](deployment-architectures.md). Siblings: [Monolith](monolith.md) · [Microservices](microservices.md). Worked example: [node-modulith on ECS](../case-studies/deploy-to-ecs-node-modulith.md) · repo: https://github.com/vasil-sarandev/node-modulith
 
 ---
 ## Naming
@@ -40,18 +40,18 @@ flowchart LR
 | `consumer-b` | `node dist/consumers/b/index.js`    | None     | Consumer lag              |
 | `cron`       | `node dist/jobs/index.js`           | None     | Fixed (usually 1 replica) |
 
-- **Read/write split** — read API points at [DB reader instances](../../../software-engineering/backend-software-engineering/assets/scaling-databases.md), write API at the writer. Routed by HTTP method or path at the ALB / Ingress ([traffic routing](traffic-routing-and-service-discovery.md)).
-- **Consumers** — no public ingress; max useful replicas ≈ topic **partition count** ([Kafka — Partitions & Consumer Scaling](../../../../technologies/apache-kafka/apache-kafka.md#partitions--consumer-scaling)).
+- **Read/write split** — read API points at [DB reader instances](../../software-engineering/backend-software-engineering/assets/scaling-databases.md), write API at the writer. Routed by HTTP method or path at the ALB / Ingress ([traffic routing](../deployment-and-release-engineering/assets/traffic-routing-and-service-discovery.md)).
+- **Consumers** — no public ingress; max useful replicas ≈ topic **partition count** ([Kafka — Partitions & Consumer Scaling](../../../technologies/apache-kafka/apache-kafka.md#partitions--consumer-scaling)).
 
 ---
 ## Why split deployments
 
 | Benefit                   | What it buys you                                                                             |
 | ------------------------- | -------------------------------------------------------------------------------------------- |
-| **Independent scaling**   | API scales on traffic, consumers on lag — no paying for API replicas to drain a backlog ([Autoscaling](autoscaling.md)) |
+| **Independent scaling**   | API scales on traffic, consumers on lag — no paying for API replicas to drain a backlog ([Autoscaling](../deployment-and-release-engineering/assets/autoscaling.md)) |
 | **Fault isolation**       | A stuck or crash-looping consumer doesn't take down the API                                   |
 | **Right-sized resources** | Per-role CPU/memory requests and limits                                                      |
-| **Independent rollouts**  | Roll out / roll back one role at a time ([Deployment Strategies](deployment-strategies.md), [Rollbacks](rollbacks.md)) |
+| **Independent rollouts**  | Roll out / roll back one role at a time ([Deployment Strategies](../deployment-and-release-engineering/assets/deployment-strategies.md), [Rollbacks](../deployment-and-release-engineering/assets/rollbacks.md)) |
 | **Clear observability**   | Dashboards and alarms per role instead of one blended process                                |
 
 ---
@@ -64,22 +64,9 @@ flowchart LR
 - **Module discipline** — boundaries are enforced by convention, not by the network; without care modules leak into each other.
 
 ---
-## Monolith vs modular monolith vs microservices
-
-|                     | **Monolith**          | **Modular monolith**                 | **Microservices**                 |
-| ------------------- | --------------------- | ------------------------------------ | --------------------------------- |
-| Repos               | 1                     | 1                                    | Many                              |
-| Images              | 1                     | 1                                    | One per service                   |
-| Deployments         | 1                     | One per role                         | One per service                   |
-| Database            | Shared                | Shared (often writer + readers)      | One per service                   |
-| Scale independently | No                    | Per role                             | Per service                       |
-| Release             | All at once           | Same image, roll out per role        | Fully independent                 |
-| Good fit            | Small app, small team | Most products at scale, one/few teams | Many teams, separate domains     |
-
----
 ## Practical notes
 
-- **Same image tag everywhere** — CI builds once, tags with git SHA, updates every role to that tag ([Docker — one image, many services](../../../../technologies/docker/docker.md)).
+- **Same image tag everywhere** — CI builds once, tags with git SHA, updates every role to that tag ([Docker — one image, many services](../../../technologies/docker/docker.md)).
 - **Role via config, not code branches** — pick the entry point with `command`; keep `ROLE`-style env flags for small differences (e.g. which DB endpoint).
 - **Graceful shutdown per role** — APIs drain connections; consumers commit offsets and leave the group cleanly.
 - **Health checks differ** — HTTP probes for APIs; consumers need a liveness signal (heartbeat file, small health endpoint, or lag alarm).

@@ -2,7 +2,7 @@
 
 #infrastructure #case-study
 
-Reference project: one TypeScript/Express API, one Docker image, one EC2 instance, RDS Postgres. Pipeline shape: **GitHub Actions → ECR → SSM Run Command → EC2 (Docker) → RDS**. No ECS, no NAT Gateway.
+Reference project: one TypeScript/Express API, one Docker image, one EC2 instance, RDS Postgres — a [monolith](../deployment-architectures/monolith.md). Pipeline shape: **GitHub Actions → ECR → SSM Run Command → EC2 (Docker) → RDS**. No ECS, no NAT Gateway.
 
 **Repo:** https://github.com/vasil-sarandev/showtimex
 **Commit snapshot:** 239b2d615cad44e649d73f5b5c6201401d1924e2

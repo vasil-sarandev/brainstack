@@ -50,7 +50,7 @@ Service reference (IAM, networking, scaling): [Amazon Web Services](../../../tec
 | Docker app, want full VM control, single instance is fine, no orchestrator needed | [EC2](ec2.md) + Docker via SSM Run Command                                     |
 | Team standard is Helm + K8s operators                                             | [EKS](eks.md)                                                                  |
 | React/Vite SPA, API elsewhere                                                     | [S3 static SPA](s3-static-spa.md)                                              |
-| One image, API + workers ([modular monolith](../deployment-and-release-engineering/assets/modular-monolith.md)) | [ECS](ecs.md) or [EKS](eks.md) — multiple services/Deployments, same image tag |
+| One image, API + workers ([modular monolith](../deployment-architectures/modular-monolith.md)) | [ECS](ecs.md) or [EKS](eks.md) — multiple services/Deployments, same image tag |
 
 Case Studies:
 
