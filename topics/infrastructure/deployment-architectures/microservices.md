@@ -6,34 +6,23 @@
 
 Parent: [Deployment Architectures](deployment-architectures.md). Siblings: [Monolith](monolith.md) · [Modular Monolith](modular-monolith.md).
 
-**Repo:** https://github.com/vasil-sarandev/compactly — not deployed, runs locally with `docker compose`.
-
 ---
 ## Shape
 
 ```mermaid
 flowchart LR
-  Client --> API[api]
-  API --> Redis[(Redis)]
-  API --> Mongo[(MongoDB)]
-  API -->|publish| Kafka
-  Kafka --> PM[pool-manager]
-  Kafka --> AN[analytics]
-  PM --> Mongo
-  AN --> Mongo
+  Client --> GW[API gateway]
+  GW --> Orders[orders]
+  GW --> Users[users]
+  Orders --> ODB[(orders DB)]
+  Users --> UDB[(users DB)]
+  Orders -->|publish| Kafka
+  Kafka --> Notif[notifications]
 ```
 
-compactly (URL shortener):
-
-| Service        | Responsibility                                                                 |
-| -------------- | ------------------------------------------------------------------------------ |
-| `api`          | Serves redirects, creates short URLs by taking pre-generated slugs from a pool |
-| `pool-manager` | Consumes Kafka events from `api` and refills the slug pool                     |
-| `analytics`    | Consumes Kafka events from `api` and updates analytics                         |
-
-- **Monorepo, separate images** — one [Turborepo](../../../technologies/turborepo/turborepo.md) repo, but each app has its own `Dockerfile` and image. Shared code lives in `packages/shared` and `packages/tooling`.
-- **Async between services** — `api` publishes events to Kafka; `pool-manager` and `analytics` consume them.
-- **Shared infra locally** — compose runs one MongoDB, Redis and Kafka for all services.
+- **Own codebase/image per service** — separate repos (polyrepo) or one monorepo with an image per app ([Turborepo](../../../technologies/turborepo/turborepo.md)).
+- **Own data** — each service talks only to its own database; others go through its API or events.
+- **Sync at the edge, async inside** — requests come in through a gateway; services react to each other's events via a broker.
 
 **vs modular monolith:** a [modular monolith](modular-monolith.md) runs the *same image* in different roles. Microservices have *different codebases/images* per service — each can change dependencies, language, or release cadence on its own.
 
@@ -53,7 +42,8 @@ compactly (URL shortener):
 ---
 ## Deploy & scale
 
-- **One pipeline per service** — build and deploy only what changed (Turborepo / path filters in CI decide which services are affected).
+- **Each service deploys like a monolith** — with separate repos, every service has its own pipeline, image and deployment, just like a [monolith](monolith.md). The hard parts are between services (contracts, data, observability), not the deploy itself.
+- **Monorepo** — one pipeline that builds and deploys only the affected services (Turborepo / path filters in CI).
 - **Independent versions** — services run different versions side by side, so API and event contracts must stay backward-compatible.
 - **Per-service scaling** — HTTP services on RPS/CPU, consumers on lag (≤ partition count) ([Autoscaling](../deployment-and-release-engineering/assets/autoscaling.md)).
 - **Target** — usually [ECS](../deployment-targets/ecs.md) or [EKS](../deployment-targets/eks.md), one service / Deployment per microservice.

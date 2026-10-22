@@ -44,4 +44,3 @@ Usual path: start as a monolith, split **process roles** when they need differen
 | ---------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------- |
 | Monolith         | [showtimex](https://github.com/vasil-sarandev/showtimex)   | [EC2 + Docker via SSM](../case-studies/deploy-to-ec2-docker-showtimex.md)  |
 | Modular monolith | [node-modulith](https://github.com/vasil-sarandev/node-modulith) | [ECS + MSK](../case-studies/deploy-to-ecs-node-modulith.md)          |
-| Microservices    | [compactly](https://github.com/vasil-sarandev/compactly)   | Not deployed — local `docker compose` only                                 |
