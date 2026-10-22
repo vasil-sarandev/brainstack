@@ -125,6 +125,7 @@ Architectural styles define the overall organization of a software system.
 
 - **Client-Server**: Clients send requests to a server for processing.
 - **Monolithic**: A single, integrated system with high coupling.
+- **Modular Monolith**: One codebase split into well-bounded modules, often deployed as several process roles (API, consumers, workers). See [Modular Monolith Deployments](../../infrastructure/deployment-and-release-engineering/assets/modular-monolith.md).
 - **Service-Oriented**: A collection of self-contained services.
 - **Layered**: Divides the system into layers with specific responsibilities. (controller -> service -> repository is an example).
 - **Microservices**: Small, independent services that can be developed and deployed independently.

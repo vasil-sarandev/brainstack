@@ -97,7 +97,7 @@ flowchart LR
 2. **Registry** ([ECR](ecr.md)) stores immutable image tags. One build artifact, referenced by many services.
 3. **Orchestrator** ([ECS](ecs.md) or [EKS](eks.md)) pulls the image and runs containers with per-service config: command, env, replicas, load balancer, health checks.
 
-**One image, many services:** a distributed monolith often ships a single image for the API and all consumers. Each ECS service / K8s Deployment uses the same `image:` URI but a different `command` (e.g. `node dist/api/app.js` vs `node dist/consumers/foo/app.js`). Deploy, scale, and roll out each service independently.
+**One image, many services:** a [modular monolith](../../topics/infrastructure/deployment-and-release-engineering/assets/modular-monolith.md) often ships a single image for the API and all consumers. Each ECS service / K8s Deployment uses the same `image:` URI but a different `command` (e.g. `node dist/api/app.js` vs `node dist/consumers/foo/app.js`). Deploy, scale, and roll out each service independently.
 
 ### What compose does *not* mirror
 

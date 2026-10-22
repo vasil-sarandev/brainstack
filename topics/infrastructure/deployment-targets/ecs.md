@@ -4,7 +4,7 @@
 
 AWS-native **container** orchestration: task definitions, services, Fargate. Typical path for Dockerized APIs and workers when you do not want to operate Kubernetes.
 
-Case study: [Node-distributed-monolith on AWS ECS](ecs-node-distributed-monolith.md)
+Case study: [node-modulith on AWS ECS](../case-studies/deploy-to-ecs-node-modulith.md)
 
 ---
 
