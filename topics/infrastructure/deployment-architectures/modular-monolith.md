@@ -44,6 +44,65 @@ flowchart LR
 - **Consumers** — no public ingress; max useful replicas ≈ topic **partition count** ([Kafka — Partitions & Consumer Scaling](../../../technologies/apache-kafka/apache-kafka.md#partitions--consumer-scaling)).
 
 ---
+## One image, many commands
+
+**One Dockerfile** at the repo root. Its default `CMD` starts the API; every other role overrides the command in its deployment config. Nothing role-specific lives in the image.
+
+```dockerfile
+FROM node:22-alpine AS base
+WORKDIR /usr/src/app
+
+FROM base AS development                    # local: tsx watch, source bind-mounted
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+CMD ["npx", "tsx", "watch", "src/api/app.ts"]
+
+FROM base AS build                          # compile TS → dist/
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run compile
+
+FROM base AS runtime                        # production image pushed to ECR
+COPY --from=build /usr/src/app/dist ./dist  # (+ prod-only node_modules)
+ENV NODE_ENV=production
+CMD ["node", "dist/api/app.js"]             # default = API; override per role
+```
+
+**Local — `docker-compose.yaml`:** every service builds the same `development` target; consumers override `command`.
+
+```yaml
+services:
+  api:
+    build: { context: ., target: development }   # uses the default CMD
+  user-marketing-consumer:
+    build: { context: ., target: development }
+    command: npx tsx watch src/consumers/user-marketing-consumer/index.ts
+```
+
+**Production — ECS task definition / K8s Deployment:** same image URI, different `command`.
+
+```jsonc
+// ECS task definition — user-marketing consumer
+"containerDefinitions": [{
+  "image": "<ecr>/node-modulith:<git-sha>",
+  "command": ["node", "dist/consumers/user-marketing-consumer/index.js"]
+}]
+```
+
+```yaml
+# K8s Deployment — same idea
+containers:
+  - image: <ecr>/node-modulith:<git-sha>
+    command: ["node", "dist/consumers/user-marketing-consumer/index.js"]
+```
+
+- **CI only swaps the image tag** — the command lives in each role's task definition / Deployment; the pipeline renders the new image into it and redeploys, per role.
+- **Adding a role** = new entry point in `src/` + one more compose service + one more task definition / Deployment. No new Dockerfile.
+- **vs a monorepo of services** (e.g. Turborepo) — usually one Dockerfile per app, each with its own build targets, so N Dockerfiles and N images. More flexible, more to maintain.
+
+---
 ## Why split deployments
 
 | Benefit                   | What it buys you                                                                             |
