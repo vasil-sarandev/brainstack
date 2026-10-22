@@ -114,6 +114,21 @@ service:
 
 Pods that don’t receive traffic (e.g. Kafka consumers, Sidekiq workers) don’t need a Service at all.
 
+### Ingress
+
+An **Ingress** routes HTTP(S) traffic from outside the cluster to Services, by hostname and path (e.g. `api.example.com/points` → `points-service`). It's only a set of rules; an **Ingress Controller** does the actual routing. On EKS that's usually the AWS Load Balancer Controller, which creates an **ALB** for each Ingress.
+
+```yaml
+ingress:
+  enabled: true
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /actuator/health/readiness   # ALB only sends traffic to pods passing this
+```
+
+- The Ingress points at a **Service**, not at pods directly.
+- It handles TLS termination and host/path routing, so one load balancer can serve many services.
+- Internal-only services don't need one: other pods call them through the Service's cluster DNS name.
+
 ### Liveness & Readiness Probes
 
 Only relevant for pods that receive traffic. K8s uses these to know if a pod is healthy enough to route requests to.
