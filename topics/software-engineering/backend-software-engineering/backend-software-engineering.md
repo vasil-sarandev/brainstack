@@ -66,6 +66,13 @@ Improves integrity and reduces redundancy:
 - **Indexes** – Indexes improve lookup speed by avoiding full-table scans, but slow down writes because indexes must also be updated.
 - **Stored Procedures** – Reusable SQL blocks with optional inputs/outputs.
 
+#### Connection Pools
+
+Apps keep a pool of open DB connections and reuse them instead of opening one per query (e.g. *HikariCP* in Java, *r2dbc-pool* for reactive apps).
+
+- The DB has a hard `max_connections` limit shared by every app instance: total ≈ instances × pool size.
+- Idle connections still count against the limit, so size pools to real concurrency (HikariCP keeps 10 open per instance by default).
+
 ### Scaling Databases
 
 - **Vertical Scaling** - Adding more resources (CPU, RAM, etc.) to a single server to handle increased load. 

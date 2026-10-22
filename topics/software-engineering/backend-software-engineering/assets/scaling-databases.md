@@ -53,6 +53,13 @@ Use cases:
 - **Database Backups**: You can use a read replica to take backups of your data. This way, your backup operations won’t impact the performance of your primary database.
 - **Failover Support**: In case your primary database fails, a read replica can be promoted to become the new primary database, providing high availability.
 
+#### Writer & Reader Instances
+
+- **Writer**: the single instance that accepts writes. **Readers**: replicas that only serve reads (e.g. an Aurora cluster has one writer and up to 15 readers on shared storage).
+- A reader in another availability zone doubles as failover: if the writer fails, the reader is promoted.
+- A **Multi-AZ standby** only takes over on failure and serves no reads.
+- A single writer in one availability zone has no failover: an instance or zone outage means downtime until it's replaced.
+
 ### Sharding (Horizontal Scaling)
 
 Relational databases slow down as the volume of records in a table increases. Searching for an item in such a large table, especially without indexing, becomes progressively slower as the data size expands. This often leads to performance bottlenecks as the database grows.
