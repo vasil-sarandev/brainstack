@@ -6,7 +6,7 @@
 
 The common setup at scale — sits between a classic monolith (one process does everything) and microservices (separate repos, images, databases).
 
-Parent: [Deployment & Release Engineering](../deployment-and-release-engineering.md). Worked example: [node-modulith on ECS](../../case-studies/deploy-to-ecs-node-modulith.md).
+Parent: [Deployment & Release Engineering](../deployment-and-release-engineering.md). Worked example: [node-modulith on ECS](../../case-studies/deploy-to-ecs-node-modulith.md) · repo: https://github.com/vasil-sarandev/node-modulith
 
 ---
 ## Naming
