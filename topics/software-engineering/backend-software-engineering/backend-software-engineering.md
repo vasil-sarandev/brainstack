@@ -68,7 +68,7 @@ Improves integrity and reduces redundancy:
 
 #### Connection Pools
 
-Apps keep a pool of open DB connections and reuse them instead of opening one per query (e.g. *HikariCP* in Java, *r2dbc-pool* for reactive apps).
+Apps keep a pool of open DB connections and reuse them instead of opening one per query (e.g. *HikariCP* in Java, *pg.Pool* in Node, *r2dbc-pool* for reactive apps).
 
 - The DB has a hard `max_connections` limit shared by every app instance: total ≈ instances × pool size.
 - Idle connections still count against the limit, so size pools to real concurrency (HikariCP keeps 10 open per instance by default).
