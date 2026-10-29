@@ -16,7 +16,7 @@ CI: docker build → push to ECR (:git-sha)
   → kubectl apply  OR  helm upgrade  OR  ArgoCD sync
 ```
 
-GitOps (ArgoCD, Flux) watches the repo and reconciles cluster state — deploy config often lives beside the app or in an infra repo.
+GitOps ([ArgoCD](../../../technologies/kubernetes/argocd.md), Flux) watches the repo and reconciles cluster state — deploy config often lives beside the app or in an infra repo.
 
 ---
 

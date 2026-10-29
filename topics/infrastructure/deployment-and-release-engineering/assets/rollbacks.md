@@ -19,7 +19,7 @@ Use [feature flags](feature-flags.md) for the first; deployment rollback for the
 ---
 ## Container rollback (ECS / EKS)
 
-Images in [ECR](ecr.md) are **immutable by tag**. Keep previous tags — never overwrite `latest` in prod.
+Images in [ECR](../../../../technologies/aws/services/ecr.md) are **immutable by tag**. Keep previous tags — never overwrite `latest` in prod.
 
 **ECS:**
 
@@ -99,7 +99,7 @@ See [node-modulith case study](../../case-studies/deploy-to-ecs-node-modulith.md
 
 - [Deployment Strategies](deployment-strategies.md) — blue/green enables instant traffic flip back
 - [Feature Flags](feature-flags.md)
-- [GitHub Actions](../../../../../technologies/github-actions/github-actions.md) — CI that tags builds
-- [ECS](ecs.md)
+- [GitHub Actions](../../../../technologies/github-actions/github-actions.md) — CI that tags builds
+- [ECS](../../deployment-targets/ecs.md)
 
 ---

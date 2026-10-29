@@ -16,7 +16,7 @@ Kubernetes is an open-source container orchestration platform that automates the
 
 - **Cluster & Nodes:** A cluster consists of a **Control Plane** (the brain) and multiple **Worker Nodes** (the muscle—usually VPSes or bare metal). A cluster is the entire environment — all nodes, all pods, all services.
 - **Pods:** The smallest deployable unit. It’s a logical wrapper around one or more containers that share the same network and storage.
-- **Deployment:** The controller that says "run N copies of this pod, keep them alive, roll out updates". This is the logical unit grouping pods with a purpose — not the cluster.
+- **Deployment:** The controller that says "run N copies of this pod, keep them alive, roll out updates". This is the logical unit grouping pods with a purpose — not the cluster. Manages one **ReplicaSet** per version, which manages the pods.
 - **Desired State:** You don’t tell K8s _how_ to start a server; you give it a **YAML manifest** describing what you want (e.g., "3 replicas of my API"), and K8s makes it happen.
 - **Self-Healing:** If a container crashes or a node dies, K8s automatically restarts or reschedules those pods on healthy hardware without human intervention.
 - **Service Discovery & Load Balancing:** K8s gives a stable DNS name and IP to a group of pods, automatically balancing traffic across them regardless of which node they live on.
@@ -26,11 +26,21 @@ Kubernetes is an open-source container orchestration platform that automates the
 
 ---
 
+## Workloads & Rollouts
+
+- [Workloads](workloads.md) — ReplicaSet, StatefulSet, DaemonSet, Job/CronJob
+- [Rollouts](rollouts.md) — `maxSurge` / `maxUnavailable`, `kubectl rollout`, PodDisruptionBudgets, spreading replicas
+- [ArgoCD & GitOps](argocd.md) — push vs pull deploys, Argo CD, Argo Rollouts
+
+---
+
 ## Scaling
 
 ### replicaCount vs autoscaling
 
-`replicaCount` in a deployment YAML sets the number of pods. For a fixed-size deployment this is all you need. For dynamic scaling you add an **HPA (HorizontalPodAutoscaler)** on top, which overrides `replicaCount` at runtime.
+The YAML here is [Helm](#helm) chart values. The chart maps `replicaCount` → `spec.replicas` on the Deployment, and `autoscaling` → an HPA's `minReplicas` / `maxReplicas`.
+
+`replicaCount` sets the number of pods. For a fixed-size deployment this is all you need. For dynamic scaling you add an **HPA (HorizontalPodAutoscaler)** on top, which overrides `replicaCount` at runtime.
 
 ```yaml
 replicaCount: 1        # starting pod count (also the floor)
@@ -93,6 +103,8 @@ resources:
 
 `requests` are what Kubernetes uses when deciding which node to place a pod on — it reserves that much capacity. `limits` are enforced at runtime but don’t affect scheduling. Setting requests too high wastes node capacity even when pods are idle.
 
+Raw K8s equivalent: `resources: { requests: { cpu, memory }, limits: { cpu, memory } }`.
+
 ---
 
 ## Services & Networking
@@ -109,8 +121,10 @@ service:
       targetPort: 3000
 ```
 
-- **ClusterIP** — internal only, other pods in the cluster can call it by name
-- **Ingress** — punches a hole to the outside world; `ingress: enabled: true` exposes the service externally
+- **ClusterIP** (default) — internal only, other pods in the cluster can call it by name
+- **NodePort** — opens the port on every node; rarely used directly
+- **LoadBalancer** — provisions a cloud load balancer (NLB on EKS) for the Service
+- **Ingress** — separate object in front of a ClusterIP Service, exposes it externally (see below); `ingress: enabled: true` in the chart values
 
 Pods that don’t receive traffic (e.g. Kafka consumers, Sidekiq workers) don’t need a Service at all.
 
@@ -167,6 +181,12 @@ A typical flow in CI/CD:
 
 Each values file becomes one independent Helm release — one Deployment (+ optional HPA, Service, etc.) in the cluster. They all live in the same cluster, same namespace, just isolated by their `deploymentName`.
 
+This is a push deploy — CI applies to the cluster. Pull-based alternative: [ArgoCD & GitOps](argocd.md).
+
+---
+
+## Scheduling
+
 ### Node selection & spot instances
 
 ```yaml
@@ -181,4 +201,6 @@ tolerations:
     effect: "NoSchedule"
 ```
 
-Spot instances are significantly cheaper but can be reclaimed by AWS at any time — K8s handles rescheduling automatically when that happens. Most stateless workloads (consumers, workers, HTTP services) run on spot. The `nodeSelector` ensures a pod only lands on nodes with matching labels.
+Spot instances are significantly cheaper but can be reclaimed by AWS at any time — K8s handles rescheduling automatically when that happens. Most stateless workloads (consumers, workers, HTTP services) run on spot. The `nodeSelector` ensures a pod only lands on nodes with matching labels. The `toleration` allows it onto nodes with the matching `NoSchedule` taint.
+
+Spreading replicas and node drains: [Rollouts](rollouts.md#poddisruptionbudgets).

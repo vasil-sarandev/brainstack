@@ -4,7 +4,7 @@
 
 **EKS** is AWS’s managed **Kubernetes** control plane. AWS runs the API server, etcd, and schedulers; you run **worker nodes** (managed node groups on [EC2](ec2.md), self-managed nodes, or **Fargate** profiles) and deploy workloads with standard K8s objects — Deployments, Services, Ingress, HPA.
 
-Kubernetes fundamentals: [Kubernetes](../../../kubernetes/kubernetes.md). Images from [ECR](ecr.md). Container alternative without K8s: [ECS](ecs.md).
+Kubernetes fundamentals: [Kubernetes](../../kubernetes/kubernetes.md). Images from [ECR](ecr.md). Container alternative without K8s: [ECS](ecs.md).
 
 Part of: [Amazon Web Services](aws.md).
 
@@ -39,7 +39,7 @@ Part of: [Amazon Web Services](aws.md).
   K8s service account → IAM role mapping. Pods assume roles to call AWS APIs and pull from [ECR](ecr.md) without node-wide credentials.
 
 - **Namespaces & Helm**  
-  Same as any cluster — one EKS cluster, many releases/namespaces. See [Kubernetes — Helm](../../kubernetes.md#helm).
+  Same as any cluster — one EKS cluster, many releases/namespaces. See [Kubernetes — Helm](../../kubernetes/kubernetes.md#helm).
 
 ---
 
@@ -59,7 +59,7 @@ EKS scaling is **two layers**: pods (application) and nodes (capacity). Both mus
 
 ### Layer 1 — Pod scaling (HPA)
 
-**Horizontal Pod Autoscaler** changes **replica count** of a Deployment based on metrics. This is standard Kubernetes, not EKS-specific — see [Kubernetes — Scaling](../../kubernetes.md#scaling). Pod **requests** must be set — HPA CPU % is relative to requests, not limits.
+**Horizontal Pod Autoscaler** changes **replica count** of a Deployment based on metrics. This is standard Kubernetes, not EKS-specific — see [Kubernetes — Scaling](../../kubernetes/kubernetes.md#scaling). Pod **requests** must be set — HPA CPU % is relative to requests, not limits.
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -96,7 +96,7 @@ spec:
 | Queue lag (SQS, Kafka) | KEDA ScaledObject |
 | ALB/request rate | Custom metric via CloudWatch or Prometheus |
 
-Helm charts often expose autoscaling as values (same idea as in [Kubernetes](../../../kubernetes/kubernetes.md#replicacount-vs-autoscaling)):
+Helm charts often expose autoscaling as values (same idea as in [Kubernetes](../../kubernetes/kubernetes.md#replicacount-vs-autoscaling)):
 
 ```yaml
 replicaCount: 2
@@ -120,7 +120,7 @@ Traffic ↑  →  HPA adds pods  →  pending pods  →  CA / Karpenter adds nod
 Traffic ↓  →  HPA removes pods  →  underutilized nodes  →  CA / Karpenter removes nodes
 ```
 
-**Spot + On-Demand mix** — node groups or Karpenter NodePools with spot for stateless workloads; on-demand for baseline or critical pods (taints/tolerations + node selectors). See [Kubernetes — Node selection & spot instances](../../kubernetes.md#node-selection--spot-instances).
+**Spot + On-Demand mix** — node groups or Karpenter NodePools with spot for stateless workloads; on-demand for baseline or critical pods (taints/tolerations + node selectors). See [Kubernetes — Node selection & spot instances](../../kubernetes/kubernetes.md#node-selection--spot-instances).
 
 ### Layer 3 — Ingress / load balancing
 
